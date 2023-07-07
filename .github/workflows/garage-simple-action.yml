@@ -1,0 +1,18 @@
+# This is a basic workflow that is manually triggered
+
+name: Manual workflow to authenticate google cloud
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs: authenticate google cloud
+    steps:
+    # actions/checkout MUST come before auth
+    - uses: 'actions/checkout@v3'
+
+    - id: 'auth'
+      name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v1'
+      with:
+        workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
+        service_account: 'my-service-account@my-project.iam.gserviceaccount.com'
