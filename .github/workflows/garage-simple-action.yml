@@ -24,4 +24,4 @@ jobs:
       - id: 'gcloud'
         name: 'gcloud'
         run: |-
-          gcloud secrets versions access "latest" --secrets "my-secret"
+          gcloud projects describe db-cicdpipeline-wave3
