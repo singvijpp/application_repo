@@ -1,18 +1,27 @@
 # This is a basic workflow that is manually triggered
 
 name: Manual workflow to authenticate google cloud
-on:
-  workflow_dispatch:
-    # Inputs the workflow accepts.
-    # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs: authenticate google cloud
+on: 
+  workflow_dispatch
+  # Inputs the workflow accepts.
+  # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  get-secret:
+    runs-on: ubuntu-latest
+    permissions: 
+      contents: read
+      id-token: write
     steps:
-    # actions/checkout MUST come before auth
-    - uses: 'actions/checkout@v3'
-
-    - id: 'auth'
-      name: 'Authenticate to Google Cloud'
-      uses: 'google-github-actions/auth@v1'
-      with:
-        workload_identity_provider: 'projects/36949417800/locations/global/workloadIdentityPools/garage-cicd/providers/garage-cicd-provider'
-        service_account: '36949417800-compute@developer.gserviceaccount.com'
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          token_format: 'access_token'
+          workload_identity_provider: 'projects/36949417800/locations/global/workloadIdentityPools/garage-cicd/providers/garage-cicd-provider'
+          service_account: 'cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com'
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v1'
+      - id: 'gcloud'
+        name: 'gcloud'
+        run: |-
+          gcloud secrets versions access "latest" --secrets "my-secret"
