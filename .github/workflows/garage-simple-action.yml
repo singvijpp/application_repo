@@ -24,4 +24,8 @@ jobs:
       - id: 'gcloud'
         name: 'gcloud'
         run: |-
+<<<<<<< HEAD
           gcloud secrets versions access "latest" --secrets "my-secret"
+=======
+          gcloud secrets versions access "latest" --secrets "my-secret"
+>>>>>>> f9c5e1c467ae60b84a54de61bf1c77f856760488
