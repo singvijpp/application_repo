@@ -24,4 +24,8 @@ jobs:
       - id: 'gcloud'
         name: 'gcloud'
         run: |-
-          gcloud projects describe db-cicdpipeline-wave3
+          gcloud storage buckets create gs://cicd-action \
+            --project=db-cicdpipeline-wave3 \
+            --default-storage-class=STANDARD \
+            --location=asia-south2 \
+            --uniform-bucket-level-access
