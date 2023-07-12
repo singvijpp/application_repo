@@ -17,8 +17,8 @@ jobs:
         uses: 'google-github-actions/auth@v1'
         with:
           token_format: 'access_token'
-          workload_identity_provider: 'projects/36949417800/locations/global/workloadIdentityPools/garage-cicd/providers/wave-3-terra'
-          service_account: 'cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com'
+          workload_identity_provider: ${{ secrets.GIT_HUB__CICD_PROVIDE }}
+          service_account: ${{ secrets.garage_service_account }}
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v1'
       - id: 'gcloud'
