@@ -1,28 +1,35 @@
-# This is a basic workflow that is manually triggered
-
-name: Manual workflow to authenticate google cloud
-on: 
-  workflow_dispatch
-  # Inputs the workflow accepts.
-  # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+name: Terraform
+env:
+  project_id: db-cicdpipeline-wave-2
+on:
+  push:
+    branches:
+      - main
+      - feature/*
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 jobs:
-  get-secret:
+  terraform:
     runs-on: ubuntu-latest
-    permissions: 
-      contents: read
-      id-token: write
     steps:
-      - id: 'auth'
-        name: 'Authenticate to Google Cloud'
-        uses: 'google-github-actions/auth@v1'
+      - name: checkout code
+        uses: actions/checkout@v3
+      - name: Auth Google cloud
+        uses: google-github-actions/auth@v1
         with:
           token_format: 'access_token'
           workload_identity_provider: ${{ secrets.GIT_HUB__CICD_PROVIDE }}
           service_account: ${{ secrets.garage_service_account }}
-      - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v1'
-      
-      - name: present working directory
-        id: pwd
-        run: pwd
-        
+      - name: Run terraform init
+        run: |
+          terraform init
+      - name: Run terraform plan
+        run: |
+          terraform plan 
+      - name: Run terraform apply
+        if: github.ref == 'refs/heads/main'
+        run: |
+          terraform apply -auto-approve
