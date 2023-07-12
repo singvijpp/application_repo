@@ -22,11 +22,7 @@ jobs:
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v1'
       
-      - name: Terraform Init
-        id: init 
-        run: terraform init 
-        
-      - name: Terraform Plan
-        id: plan
-        run: terraform plan
+      - name: present working directory
+        id: pwd
+        run: pwd
         
