@@ -9,9 +9,3 @@ resource "google_storage_bucket" "test-bucket-for-state" {
 
  uniform_bucket_level_access = true
 }
-terraform {
-  backend "gcs" {
-    bucket  = "db-cicd-wave3"
-    prefix  = "terraform/state"
-  }
-}
