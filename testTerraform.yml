@@ -1,6 +1,6 @@
 name: Terraform
 env:
-  project_id: db-cicdpipeline-wave-2
+  project_id: db-cicdpipeline-wave-3
 on:
   push:
     branches:
