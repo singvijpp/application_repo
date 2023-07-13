@@ -19,7 +19,7 @@ resource "google_storage_bucket" "bucket" {
   }
 
   logging {
-    log_bucket = "your-logging-bucket"
+    log_bucket = "cicd-action"
     log_object_prefix = "logs/"
   }
 
