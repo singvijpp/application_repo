@@ -19,17 +19,17 @@ jobs:
           token_format: 'access_token'
           workload_identity_provider: ${{ secrets.GIT_HUB__CICD_PROVIDE }}
           service_account: ${{ secrets.garage_service_account }}
-        name: 'Set up Cloud SDK'
+      - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v1'
         
       - id: 'terraform script run'
         name: Run terraform init
         run: |
           terraform init
-        name: Run terraform plan
+      - name: Run terraform plan
         run: |
           terraform plan
-        name: Run terraform apply
+      - name: Run terraform apply
         if: github.ref == 'refs/heads/main'
         run: |
           terraform apply -auto-approve
