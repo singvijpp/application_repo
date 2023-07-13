@@ -6,6 +6,7 @@ on:
     branches:
       - main
       - feature/*
+      - nikhil-cicd
   workflow_dispatch:
 permissions:
   contents: read
