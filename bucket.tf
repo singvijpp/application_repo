@@ -1,7 +1,18 @@
-resource "google_storage_bucket" "demo" {
-  name          = "Demobucket"
+resource "google_storage_bucket" "Demo" {
+  name          = "Demo-terraform_bucket_cicd"
   location      = "asia-south2"
   force_destroy = true
 
-  uniform_bucket_level_access = true
+  versioning {
+    enabled = true
+  }
+
+  lifecycle_rule {
+    condition {
+      age = 30
+    }
+    action {
+      type = "Delete"
+    }
+  }
 }
