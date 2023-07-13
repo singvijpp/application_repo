@@ -12,6 +12,8 @@ jobs:
       contents: read
       id-token: write
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - id: 'auth'
         name: 'Authenticate to Google Cloud'
         uses: 'google-github-actions/auth@v1'
@@ -21,8 +23,6 @@ jobs:
           service_account: ${{ secrets.garage_service_account }}
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v1'
-      - name: Checkout
-        uses: actions/checkout@v2
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
         with:
