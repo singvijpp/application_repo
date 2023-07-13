@@ -3,7 +3,7 @@ variable "project" {
     default = "db-cicdpipeline-wave3"
 }
 
-variable "region" {
+variable "region_id" {
     type = string
     default = "asia-northeast1"
 }
