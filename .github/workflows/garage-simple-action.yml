@@ -23,21 +23,12 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v1'
       - id: 'terraform script run'
       - name: Run terraform init
-
         run: |
-
           terraform init
-
       - name: Run terraform plan
-
         run: |
-
           terraform plan
-
       - name: Run terraform apply
-
         if: github.ref == 'refs/heads/main'
-
         run: |
-
           terraform apply -auto-approve
