@@ -1,7 +1,7 @@
 resource "google_compute_instance" "default" {
   name         = "test"
   machine_type = "n1-micro"
-  zone         = "us-central1-a"
+  zone         = "asia-south1"
 
 boot_disk {
     initialize_params {
