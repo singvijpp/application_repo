@@ -42,4 +42,4 @@ jobs:
           terraform plan
       - name: Run terraform apply
         run: |
-          terraform apply -auto-approve
+          terraform destroy -target=google_storage_bucket.my-frist-bucket_wave3
