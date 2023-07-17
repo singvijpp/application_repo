@@ -6,5 +6,7 @@ resource "google_storage_bucket" "my-frist-bucket_wave3" {
  name          = "my-frist-bucket_wave3"
  location      = "US"
  storage_class = "STANDARD"
- force_destroy = true
+  lifecycle {
+    prevent_destroy = true
+  }
 }
