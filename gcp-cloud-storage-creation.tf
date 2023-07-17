@@ -1,11 +1,14 @@
-resource "google_storage_bucket" "bucket" {
-  name          = "terraform_bucket_1"
-  location      = "asia-south2"
-  force_destroy = true
+provider "google" {
+  project     = "db-cicdpipeline-wave3"
+  region      = "asia-east2"
+}
+resource "google_storage_bucket" "test-bucket-for-state" {
+ name          = "my-frist-bucket"
+ location      = "US"
+ storage_class = "STANDARD"
 
-  versioning {
-    enabled = true
-  }
+ uniform_bucket_level_access = true
+}
 
   lifecycle_rule {
     condition {
