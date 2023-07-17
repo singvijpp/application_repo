@@ -39,4 +39,4 @@ jobs:
           terraform init
       - name: Run terraform plan -destroy
         run: |
-          terraform destroy
+          terraform destroy --auto-approve --force
