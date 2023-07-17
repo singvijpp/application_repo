@@ -5,7 +5,7 @@ provider "google" {
 resource "google_storage_bucket" "test-bucket-for-state" {
  name          = "my-frist-bucket_wave3"
  location      = "US"
- storage_class = "STANDARD"
+ force_destroy = true
 
- uniform_bucket_level_access = true
+ public_access_prevention = "enforced"
 }
