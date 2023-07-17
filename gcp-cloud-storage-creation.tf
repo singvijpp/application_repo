@@ -2,10 +2,9 @@ provider "google" {
   project     = "db-cicdpipeline-wave3"
   region      = "asia-east2"
 }
-resource "google_storage_bucket" "auto-expire" {
+resource "google_storage_bucket" "my-frist-bucket_wave3" {
  name          = "my-frist-bucket_wave3"
  location      = "US"
+ storage_class = "STANDARD"
  force_destroy = true
-
- public_access_prevention = "enforced"
 }
