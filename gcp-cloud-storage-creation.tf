@@ -9,13 +9,3 @@ resource "google_storage_bucket" "test-bucket-for-state" {
 
  uniform_bucket_level_access = true
 }
-
-  lifecycle_rule {
-    condition {
-      age = 30
-    }
-    action {
-      type = "Delete"
-    }
-  }
-}
