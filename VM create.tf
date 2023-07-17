@@ -1,5 +1,5 @@
-resource "google_compute_instance" "default" {
-  name         = "test"
+resource "google_compute_instance" "VM_Test" {
+  name         = "VMtest"
   machine_type = "n1-micro"
   zone         = "asia-south1"
 
