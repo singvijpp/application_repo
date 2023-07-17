@@ -1,6 +1,6 @@
 resource "google_compute_instance" "VM_Test" {
   name         = "VMtest"
-  machine_type = "n1-micro"
+  machine_type = "e2-medium"
   zone         = "asia-south2-a"
 
 boot_disk {
