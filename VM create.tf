@@ -1,7 +1,7 @@
 resource "google_compute_instance" "VM_Test" {
   name         = "VMtest"
   machine_type = "n1-micro"
-  zone         = "asia-south1"
+  zone         = "asia-south2-a"
 
 boot_disk {
     initialize_params {
