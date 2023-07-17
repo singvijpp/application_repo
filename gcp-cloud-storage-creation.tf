@@ -3,7 +3,7 @@ provider "google" {
   region      = "asia-east2"
 }
 resource "google_storage_bucket" "test-bucket-for-state" {
- name          = "my-frist-bucket"
+ name          = "my-frist-bucket_wave3"
  location      = "US"
  storage_class = "STANDARD"
 
