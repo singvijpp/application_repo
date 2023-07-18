@@ -9,7 +9,7 @@ resource "google_compute_instance" "vm_instance" {
   
     boot_disk {
       initialize_params {
-        image = "debian-cloud/debian-9"
+        image = "centos-cloud/centos-7"
       }
     }    
     network_interface {       
