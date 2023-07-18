@@ -4,17 +4,11 @@ provider "google" {
   zone        ="asia-south1-a"
 }
 resource "google_compute_instance" "vm_instance" {
-    name         = "gcptutorials-vm"
-    machine_type = "f1-micro"
-  
-    boot_disk {
-      initialize_params {
-        image = "hpc-centos-7"
-      }
-    }    
-    network_interface {       
-      network = "default"
-      access_config {
-      }
-    }
-  }
+name = "terraform-instance2"
+machine_type = "f1-micro"
+zone = "us-central1-c"
+boot_disk {
+initialize_params {
+image = "centos-cloud/centos-7"
+}
+}
