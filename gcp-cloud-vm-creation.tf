@@ -13,8 +13,8 @@ image = "centos-cloud/centos-7"
 }
 }
 network_interface {
-network = google_compute_network.vpc_network.name
-access_config {
-}
-}
+    network = "default"
+    access_config {
+    }
+  }
 }
