@@ -8,6 +8,4 @@ key_name = "crypto-nikhil"
 
 rotation_period = "2592000s" //30 days [its the default]
 
-region = "us-east1"
-
 algorithm = "GOOGLE_SYMMETRIC_ENCRYPTION"
