@@ -43,7 +43,4 @@ jobs:
       - name: Run terraform apply
         run: |
           terraform apply -auto-approve
-      - name: terraform import
-        run: |
-          terraform import google_project_iam_binding.my_project "db-cicdpipeline-wave3 roles/editor"
           
