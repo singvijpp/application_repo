@@ -37,6 +37,5 @@ jobs:
       - name: Run terraform apply
         run: |
           terraform apply -auto-approve
-      - name: Run terraform destroy
-        run: |
-          terraform destroy
+        
+
