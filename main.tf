@@ -13,7 +13,7 @@ resource "google_storage_bucket" "test-bucket-for-state" {
 
 resource "google_kms_key_ring" "default" {
 
-  name = var.ring_name
+  name = var.keyring_name
 
   location = var.region
 
