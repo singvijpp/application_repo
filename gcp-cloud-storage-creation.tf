@@ -1,7 +1,7 @@
 provider "google" {
   project     = "db-cicdpipeline-wave3"
-  region      = "asia-east2"
-  zone        ="asia-east2-a"
+  region      = "asia-south1"
+  zone        ="asia-south1-a"
 }
 resource "google_compute_instance" "vm_instance" {
     name         = "gcptutorials-vm"
