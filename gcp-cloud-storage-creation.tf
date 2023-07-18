@@ -1,5 +1,5 @@
 resource "google_storage_bucket" "bucket" {
-  name          = "terraform_bucket_cicd"
+  name          = "mybucket1"
   location      = "asia-south2"
   force_destroy = true
 
