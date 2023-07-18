@@ -12,3 +12,4 @@ initialize_params {
 image = "centos-cloud/centos-7"
 }
 }
+}
