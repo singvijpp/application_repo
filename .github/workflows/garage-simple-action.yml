@@ -33,7 +33,9 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: 1.5.2
-      
+      - name: terraform import
+        run: |
+          terraform import google_project_iam_binding.my_project "db-cicdpipeline-wave3 roles/editor"
       - name: Run terraform init
         run: |
           terraform init
