@@ -1,4 +1,8 @@
- provider "google" {
+resource "google_project_iam_binding" "project" {
+  project = "db-cicdpipeline-wave3"
+  role    = "roles/editor"
+}
+provider "google" {
   project     = "db-cicdpipeline-wave3"
   region      = "asia-south1"
   zone        ="asia-south1-a"
