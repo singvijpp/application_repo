@@ -1,4 +1,4 @@
-name: Terraform
+name: Terraformm
 env:
   project_id: db-cicdpipeline-wave-3
 on:
