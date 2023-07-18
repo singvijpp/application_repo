@@ -1,4 +1,4 @@
-/* provider "google" {
+ provider "google" {
   project     = "db-cicdpipeline-wave3"
   region      = "asia-south1"
   zone        ="asia-south1-a"
@@ -18,4 +18,3 @@ resource "google_compute_instance" "vm_instance" {
       }
     }
   }
-*/
