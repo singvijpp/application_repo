@@ -55,4 +55,4 @@ resource "google_kms_crypto_key_iam_binding" "crypto_key" {
   ]
 
 }
-data “google_project” “project” {}
+data "google_project" "project" {}
