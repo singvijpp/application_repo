@@ -7,9 +7,4 @@ resource "google_compute_instance" "vm_instance" {
 	image = "debian-cloud/debian-11"
     }
   }
-  network_interface {
-    network = "default"
-    access_config {
-    }
-   }
 }
