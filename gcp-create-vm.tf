@@ -10,6 +10,7 @@ resource "google_compute_instance" "vm_instance" {
 
    network_interface {
     network = "wave-3"
+    subnetwork = "custom"
     access_config {
     }
    }
