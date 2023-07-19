@@ -11,7 +11,7 @@ resource "google_compute_instance" "vm_instance" {
     network = "default"
  access_config {
       // Ephemeral public IP
- --subnet-mode=AUTO
+
     }
    }
 }
