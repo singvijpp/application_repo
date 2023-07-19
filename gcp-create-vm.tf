@@ -9,8 +9,10 @@ resource "google_compute_instance" "vm_instance" {
   }
  network_interface {
     network = "default"
+    auto_create_subnetworks = TRUE
  access_config {
       // Ephemeral public IP
+ 
 
     }
    }
