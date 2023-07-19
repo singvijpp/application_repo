@@ -11,4 +11,3 @@ resource "google_compute_instance" "wave3_java_app_windows_instance" {
     network = "default"
     }
   }
-}
