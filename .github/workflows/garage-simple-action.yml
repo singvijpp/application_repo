@@ -43,7 +43,7 @@ jobs:
       - name: Run terraform apply
         run: |
           terraform apply -auto-approve
-      - name: Run terraform distroy 
+      - name: Run terraform destroy 
         run: |
-          terraform destroy -auto-approve
+          terraform destroy -target=google_compute_instance.gcpwave3-vm
           
