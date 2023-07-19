@@ -11,7 +11,7 @@ resource "google_storage_bucket" "test-bucket-for-state" {
  uniform_bucket_level_access = true
 }
 
-resource "google_kms_key_ring" "default" {
+resource "google_kms_key_ring" "keyring" {
 
   name = var.keyring_name
 
