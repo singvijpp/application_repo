@@ -3,7 +3,7 @@ resource "google_compute_instance" "vm_instance" {
   machine_type	= "f1-micro"
 
   boot_disk {
-    initializa_params {
+    initialize_params {
 	image = "debian-cloud/debian-9"
     }
   }
