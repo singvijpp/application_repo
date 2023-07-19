@@ -13,6 +13,6 @@ resource "google_compute_instance" "vm_instance" {
       }
     }    
     network_interface {       
-      network = "default"
+      network = "terraform-network"
     }
   }
