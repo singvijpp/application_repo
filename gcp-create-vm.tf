@@ -19,6 +19,6 @@ resource "google_compute_instance" "default" {
 resource "google_compute_address" "static" {
   name = "vm-public-address"
   project = "db-cicdpipeline-wave3"
-  zone = "us-central1-a"
+  
   
 }
