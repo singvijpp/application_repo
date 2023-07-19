@@ -1,6 +1,7 @@
 resource "google_compute_instance" "vm_instance" {
   name		= "gcp-wave3-vm"
   machine_type	= "f1-micro"
+  zone 		= "us-west1"
 
   boot_disk {
     initialize_params {
