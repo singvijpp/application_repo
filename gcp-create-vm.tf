@@ -1,4 +1,4 @@
-resource "google_compute_instance" "vm_instance" {
+resource "google_compute_instance" "default" {
   name		= "gcp-wave3-vm"
   machine_type	= "f1-micro"
   zone         = "us-central1-a"
