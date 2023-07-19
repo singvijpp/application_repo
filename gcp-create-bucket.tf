@@ -1,5 +1,5 @@
-resource "google_storage_bucket" "auto-expire" {
+ resource "google_storage_bucket" "static" {
   name          = "gcp_wave3_cicd"
-  region      = "ASIA-SOUTH1"
+  location      = "US-CENTRAL1"
   force_destroy = true
-}
+} 
