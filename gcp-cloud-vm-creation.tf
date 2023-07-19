@@ -13,7 +13,7 @@ resource "google_compute_instance" "vm_instance" {
       }
     }    
     network_interface {
-    subnetwork = "custom"
-    network = "wave-3"
+    network = "terraform-network"
+    access_config {}
   }
   }
