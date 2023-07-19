@@ -18,7 +18,7 @@ resource "google_compute_instance" "default" {
 }
 resource "google_compute_address" "static" {
   name = "vm-public-address"
-  project = var.project
-  region = var.region
+  project = "db-cicdpipeline-wave3"
+  region = "asia-east2"
   
 }
