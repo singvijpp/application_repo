@@ -7,6 +7,7 @@ resource "google_compute_instance" "default" {
 	image = "debian-cloud/debian-11"
     }
   }
+
    network_interface {
     network = "default"
     subnetwork = "custom"
@@ -14,4 +15,10 @@ resource "google_compute_instance" "default" {
     nat_ip = google_compute_address.static.address
     }
    }
+}
+resource "google_compute_address" "static" {
+  name = "vm-public-address"
+  project = var.project
+  region = var.region
+  
 }
