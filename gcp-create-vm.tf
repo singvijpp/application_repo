@@ -9,7 +9,7 @@ resource "google_compute_instance" "default" {
   }
 
    network_interface {
-    network = "default"
+    network = "wave-3"
     subnetwork = "custom"
     access_config {
     }
