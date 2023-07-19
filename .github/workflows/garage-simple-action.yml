@@ -45,5 +45,5 @@ jobs:
           terraform apply -auto-approve
       - name: Run terraform destroy 
         run: |
-          terraform destroy --target google_compute_instance.gcpwave3-vm
+          gcloud storage rm --recursive gs://my-frist-bucket_wave3/
           
