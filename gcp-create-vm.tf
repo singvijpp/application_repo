@@ -1,4 +1,4 @@
-resource "google_compute_instance" "default" {
+resource "google_compute_instance" "vm_instance" {
   name		= "gcp-wave3-vm"
   machine_type	= "f1-micro"
   zone         = "us-central1-a"
@@ -10,7 +10,6 @@ resource "google_compute_instance" "default" {
 
    network_interface {
     network = "wave-3"
-    subnetwork = "custom"
     access_config {
     }
    }
