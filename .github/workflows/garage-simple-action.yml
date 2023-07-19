@@ -42,8 +42,6 @@ jobs:
           terraform plan
       - name: Run terraform apply
         run: |
-          terraform apply -auto-approve
-      - name: Run terraform destroy 
-        run: |
-          gcloud storage rm --recursive gs://my-frist-bucket_wave3/
+          terraform apply -destroy
+      
           
