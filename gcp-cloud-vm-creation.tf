@@ -13,7 +13,7 @@ provider "google" {
 source_ranges = ["0.0.0.0/0"] 
   target_tags   = ["externalssh-wave3"]
 }*/
-resource "google_compute_firewall" "allow-ssh" {
+/*resource "google_compute_firewall" "allow-ssh" {
   name = "fw-allow-ssh"
   network = "wave-3"
   allow {
@@ -22,10 +22,11 @@ resource "google_compute_firewall" "allow-ssh" {
   }
   source_tags = ["vpc-firewall-rules"]
   target_tags = ["ssh"]
-}
+}*/
 resource "google_compute_instance" "vm_instance" {
     name         = "gcpwave3-linux-vm"
     machine_type = "f1-micro"
+    tags = ["ssh"]
   
     boot_disk {
       initialize_params {
