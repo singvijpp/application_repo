@@ -1,11 +1,10 @@
 resource "google_compute_instance" "vm_instance"{
 	name = "ubuntu"
 	machine_type = "e2-standard-2"
-	region = "asia-south1"
 	zone = "asia-south1-c"
 	
 	boot_disk {
-		initalize_params {
+		initialize_params {
 			image = "Ubuntu"
 		}
 	}
@@ -23,7 +22,7 @@ resource "google_compute_instance" "vm_instance"{
 }
 
 resource "google_compute_firewall" "http-server" {
-	name = "default allow http terraform"
+	name = "default-allow-http-terraform"
 	network = "default"
 	
 	allow {
