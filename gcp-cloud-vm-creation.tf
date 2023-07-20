@@ -13,7 +13,7 @@
 source_ranges = ["0.0.0.0/0"] 
   target_tags   = ["externalssh-wave3"]
 }*/
-resource "google_compute_firewall" "allow-ssh" {
+/*resource "google_compute_firewall" "allow-ssh" {
   name = "allow-ssh"
   network = "wave-3"
   allow {
@@ -22,7 +22,7 @@ resource "google_compute_firewall" "allow-ssh" {
   }
   source_ranges = ["0.0.0.0/0"]
   target_tags = ["gcpwave3-linux-vm"]
-}
+}*/
 /*resource "google_compute_instance" "vm_instance" {
     name         = "gcpwave3-linux-vm"
     machine_type = "f1-micro"
