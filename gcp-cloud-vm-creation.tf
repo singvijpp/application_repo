@@ -10,6 +10,7 @@ resource "google_compute_firewall" "firewall" {
     protocol = "tcp"
     ports    = ["22"]
   }
+}
 resource "google_compute_instance" "vm_instance" {
     name         = "gcpwave3-linux-vm"
     machine_type = "f1-micro"
