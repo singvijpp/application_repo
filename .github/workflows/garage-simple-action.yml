@@ -43,5 +43,7 @@ jobs:
       - name: Run terraform apply
         run: |
           terraform apply -auto-approve
-      
+      - name: delete firewall
+        run: |
+          gcloud compute firewall-rules delete firewall-externalssh
           
