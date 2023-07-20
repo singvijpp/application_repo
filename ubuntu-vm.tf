@@ -5,12 +5,12 @@ resource "google_compute_instance" "vm_instance"{
 	
 	boot_disk {
 		initialize_params {
-			image = "Ubuntu"
+			image = "ubuntu-os-cloud/ubuntu-2204-lts"
 		}
 	}
 	
 	network_interface {
-		network = "default"
+		network = "wave-3"
 		
 		access_config {
 		
@@ -22,12 +22,13 @@ resource "google_compute_instance" "vm_instance"{
 }
 
 resource "google_compute_firewall" "http-server" {
+
 	name = "default-allow-http-terraform"
-	network = "default"
+	network = "wave-3"
 	
 	allow {
 		protocol = "tcp"
-		ports = ["80"]
+		ports = ["22"]
 	}
 
 	source_ranges = ["0.0.0.0/0"]

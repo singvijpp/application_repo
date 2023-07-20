@@ -55,3 +55,10 @@ resource "google_kms_crypto_key_iam_binding" "crypto_key" {
   ]
 
 }
+
+terraform {
+	backend "gcs" {
+		bucket = "db-cicd-wave3"
+		prefix = "terraform/state"
+	}
+}
