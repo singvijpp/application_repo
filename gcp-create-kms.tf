@@ -3,7 +3,7 @@ resource "google_kms_key_ring" "default" {
 
   name = "gcp-wave3-ring"
 
-  location = "US-CENTRAL1"
+  location = "asia-east2"
 
 }
 
