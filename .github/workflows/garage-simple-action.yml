@@ -43,7 +43,4 @@ jobs:
       - name: Run terraform apply
         run: |
           terraform apply -auto-approve
-      - name: delete rule
-        run: |
-          gcloud compute firewall-rules delete fw-allow-ssh
           
