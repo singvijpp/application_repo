@@ -33,8 +33,8 @@ resource "google_compute_instance" "vm_instance" {
       }
     }    
     network_interface {
-    network = "wave-3"
-    subnetwork = "asia-south-1"
+      network = "wave-3"
+      subnetwork = "asia-south-1"
     access_config {}
   }
   }
