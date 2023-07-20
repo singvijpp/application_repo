@@ -1,4 +1,4 @@
-name: Terraformm
+name: Terraform
 env:
   project_id: db-cicdpipeline-wave-3
 on:
@@ -43,5 +43,4 @@ jobs:
       - name: Run terraform apply
         run: |
           terraform apply -auto-approve
-          gcloud compute firewall-rules delete allow-ssh
           
