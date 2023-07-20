@@ -10,7 +10,7 @@ resource "google_kms_key_ring" "kms_key_ring_gcp" {
 
   name = "kms_key_ring_gcp"
 
-  location = "asia-east2"
+  location = "asia-east1"
 
 }
 
