@@ -1,11 +1,3 @@
-provider "google" {
-
-credentials = file("~/gcp/access-keys.json")
-
-project = "db-cicdpipeline-wave3"
-
-region = "asia-south2-a"
-}
 
 resource "google_kms_key_ring" "default" {
 
