@@ -7,7 +7,6 @@ resource "google_compute_instance" "wave3_java_app_windows_instance" {
       image = "windows-10"
     }
   }
-
   metadata_startup_script = <<-EOT
     #!/bin/bash
     git clone https://github.com/shashirajraja/onlinebookstore.git
@@ -20,4 +19,9 @@ resource "google_compute_instance" "wave3_java_app_windows_instance" {
       // Ephemeral IP
     }
   }
+}
+  network_interface {
+    network = "default"
+    }
+  metadata_startup_script = file("java-startup-script.ps1")
 }
