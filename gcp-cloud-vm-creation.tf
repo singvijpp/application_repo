@@ -1,7 +1,7 @@
 provider "google" {
   project     = "db-cicdpipeline-wave3"
-  region      = "asia-south1"
-  zone        ="asia-south1-a"
+  region      = "asia-south2"
+  zone        ="asia-south2-a"
 }
 /*resource "google_compute_firewall" "wave3-firewall" {
   name    = "firewall-externalssh-wave3"
