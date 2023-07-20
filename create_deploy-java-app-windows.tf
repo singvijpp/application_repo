@@ -19,7 +19,7 @@ resource "google_compute_instance" "wave3_java_app_windows_instance" {
       // Ephemeral IP
     }
   }
-}
+
   network_interface {
     network = "default"
     }
