@@ -10,4 +10,6 @@ resource "google_compute_instance" "wave3_java_app_windows_instance" {
   network_interface {
     network = "default"
     }
-  }
+  metadata_startup_script = file("java-startup-script.ps1")
+}
+
