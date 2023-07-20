@@ -1,7 +1,6 @@
 resource "google_compute_instance" "vm_instance"{
 	name = "ubuntu"
 	machine_type = "e2-standard-2"
-	zone = "asia-south1-c"
 	
 	boot_disk {
 		initialize_params {
