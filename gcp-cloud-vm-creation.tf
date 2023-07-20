@@ -4,14 +4,14 @@ provider "google" {
   zone        ="asia-south1-a"
 }
 resource "google_compute_firewall" "wave3-firewall" {
-  name    = "firewall-externalssh"
+  name    = "firewall-externalssh-wave3"
   network = "terraform-network"
   allow {
     protocol = "tcp"
     ports    = ["22"]
   }
 source_ranges = ["0.0.0.0/0"] 
-  target_tags   = ["externalssh"]
+  target_tags   = ["externalssh-wave3"]
 }
 resource "google_compute_instance" "vm_instance" {
     name         = "gcpwave3-linux-vm"
