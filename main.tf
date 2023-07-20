@@ -7,8 +7,22 @@ resource "google_storage_bucket" "test-bucket-for-state" {
  name          = "db-cicd-wave3"
  location      = "US"
  storage_class = "STANDARD"
+ force_destroy = true
 
  uniform_bucket_level_access = true
+ 
+   lifecycle_rule {
+    condition {
+      age = 30
+    }
+encryption {
+    default_kms_key_name = google_kms_crypto_key.key.self_link
+  }  
+action {
+      type = "Delete"
+    }
+  }
+  
 }
 
 resource "google_kms_key_ring" "keyring" {
@@ -23,7 +37,7 @@ resource "google_kms_crypto_key" "key" {
 
   name = var.key_name
 
-  key_ring = google_kms_key_ring.keyring.id
+  key_ring = google_kms_key_ring.keyring.self_link
 
   rotation_period = var.rotation_period
 
