@@ -7,7 +7,7 @@ resource "google_compute_firewall" "allow-ssh" {
   name = "allow-ssh"
   network = "wave-3"
   allow {
-    protocol = "ssh"
+    protocol = "tcp"
     ports    = ["22"]
   }
   source_ranges = ["0.0.0.0/0"]
