@@ -10,7 +10,7 @@ resource "google_compute_instance" "default" {
 
    network_interface {
     network = "wave-3"
-    subnetwork = "CUSTOM"
+    subnetwork = "asia-south-1"
     access_config {
     
     }
