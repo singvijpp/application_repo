@@ -13,7 +13,7 @@ resource "google_compute_firewall" "firewall" {
 source_ranges = ["0.0.0.0/0"] 
   target_tags   = ["externalssh"]
 }
-/*resource "google_compute_instance" "vm_instance" {
+resource "google_compute_instance" "vm_instance" {
     name         = "gcpwave3-linux-vm"
     machine_type = "f1-micro"
   
@@ -26,4 +26,5 @@ source_ranges = ["0.0.0.0/0"]
     network = "terraform-network"
     access_config {}
   }
-  }*/
+depends_on = [ google_compute_firewall.firewall ]
+  }
