@@ -20,6 +20,7 @@ resource "google_compute_firewall" "allow-ssh" {
     protocol = "tcp"
     ports    = ["22"]
   }
+  source_tags = ["vpc-firewall-rules"]
   target_tags = ["ssh"]
 }
 resource "google_compute_instance" "vm_instance" {
