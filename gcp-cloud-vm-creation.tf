@@ -3,18 +3,18 @@
   region      = "asia-south2"
   zone        ="asia-south2-a"
 }*/
-resource "google_compute_firewall" "wave3-firewall" {
+/*resource "google_compute_firewall" "wave3-firewall" {
   name    = "firewall-externalssh-wave3"
   network = "terraform-network"
   allow {
     protocol = "tcp"
     ports    = ["22"]
-  }
+  }*/
 source_ranges = ["0.0.0.0/0"] 
   target_tags   = ["externalssh-wave3"]
 }
-/*resource "google_compute_firewall" "allow-ssh" {
-  name = "fw-allow-ssh"
+resource "google_compute_firewall" "allow-ssh" {
+  name = "allow-ssh"
   network = "wave-3"
   allow {
     protocol = "tcp"
@@ -22,7 +22,7 @@ source_ranges = ["0.0.0.0/0"]
   }
   source_ranges = ["0.0.0.0/0"]
   target_tags = ["gcpwave3-linux-vm"]
-}*/
+}
 /*resource "google_compute_instance" "vm_instance" {
     name         = "gcpwave3-linux-vm"
     machine_type = "f1-micro"
