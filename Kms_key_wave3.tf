@@ -2,10 +2,10 @@
   project = "db-cicdpipeline-wave3"
   zone = "asia-south1-a"
 }
-/*resource "google_project_service" "project_cloudkms" {
+ resource "google_project_service" "project_cloudkms" {
   project = "db-cicdpipeline-wave3"
   service = "cloudkms.googleapis.com"
-}*/
+}
 resource "google_kms_key_ring" "kms_key_ring_wave3" {
   name = "kms_key_ring_wave3"
   location = "asia-south1"
