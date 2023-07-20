@@ -9,10 +9,10 @@
   allow {
     protocol = "tcp"
     ports    = ["22"]
-  }*/
+  }
 source_ranges = ["0.0.0.0/0"] 
   target_tags   = ["externalssh-wave3"]
-}
+}*/
 resource "google_compute_firewall" "allow-ssh" {
   name = "allow-ssh"
   network = "wave-3"
