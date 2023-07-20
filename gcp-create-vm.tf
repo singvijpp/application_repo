@@ -9,7 +9,7 @@ resource "google_compute_instance" "default" {
   }
 
    network_interface {
-    network = "terraform-network"
+    network = "wave-3"
     access_config {
     
     }
