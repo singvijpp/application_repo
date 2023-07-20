@@ -5,7 +5,7 @@ resource "google_kms_key_ring" "kms_key_ring" {
 
 resource "google_kms_crypto_key" "kms_crypto_key" {
   name            = "crypto-key"
-  key_ring        = google_kms_key_ring.default.self_link
+  key_ring        = google_kms_key_ring.kms_key_ring.self_link
   rotation_period = "2592000s"
 }
 
