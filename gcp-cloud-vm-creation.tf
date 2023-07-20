@@ -13,17 +13,17 @@ provider "google" {
 source_ranges = ["0.0.0.0/0"] 
   target_tags   = ["externalssh-wave3"]
 }*/
-/*resource "google_compute_firewall" "allow-ssh" {
+resource "google_compute_firewall" "allow-ssh" {
   name = "fw-allow-ssh"
   network = "wave-3"
   allow {
     protocol = "tcp"
     ports    = ["22"]
   }
-  source_tags = ["vpc-firewall-rules"]
-  target_tags = ["ssh"]
-}*/
-resource "google_compute_instance" "vm_instance" {
+  source_ranges = ["0.0.0.0/0"]
+  target_tags = ["gcpwave3-linux-vm"]
+}
+/*resource "google_compute_instance" "vm_instance" {
     name         = "gcpwave3-linux-vm"
     machine_type = "f1-micro"
     tags = ["ssh"]
@@ -38,4 +38,4 @@ resource "google_compute_instance" "vm_instance" {
       subnetwork = "asia-south-1"
     access_config {}
   }
-  }
+  }*/
