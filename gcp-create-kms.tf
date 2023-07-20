@@ -1,10 +1,10 @@
 
-provider "google" {
+/* provider "google" {
 
 project = "db-cicdpipeline-wave3"
 
 region = "asia-south2-a"
-}
+} */
 
 resource "google_kms_key_ring" "gcp_wave3_ring" {
 
