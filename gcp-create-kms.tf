@@ -6,19 +6,19 @@ project = "db-cicdpipeline-wave3"
 region = "asia-south2-a"
 } */
 
-resource "google_kms_key_ring" "gcp_wave3_ring" {
+resource "google_kms_key_ring" "kms_key_ring_gcp" {
 
-  name = "gcp_wave3_ring"
+  name = "kms_key_ring_gcp"
 
   location = "asia-east2"
 
 }
 
-resource "google_kms_crypto_key" "gcp_crypto_key_kms" {
+resource "google_kms_crypto_key" "kms_crypto_key_gcp" {
 
-  name = "gcp_crypto_key_kms"
+  name = "kms_crypto_key_gcp"
 
-  key_ring = "google_kms_key_ring.gcp_wave3_ring"
+  key_ring = "google_kms_key_ring.kms_key_ring_gcp.id"
 
 
   version_template {
