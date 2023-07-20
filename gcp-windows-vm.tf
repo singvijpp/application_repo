@@ -9,7 +9,7 @@ resource "google_compute_instance" "vm_instance" {
     
     boot_disk {
       initialize_params {
-        image = "windows-10"
+        image = "windows-cloud/windows-2019"
       }
     }    
     network_interface {
