@@ -5,7 +5,7 @@ resource "google_kms_key_ring" "wave3_kms_key_ring" {
 
 resource "google_kms_crypto_key" "wave3_kms_crypto_key" {
   name            = "wave3-crypto-key"
-  key_ring        = google_kms_key_ring.wave3_kms_key_ring.self_link
+  key_ring        = google_kms_key_ring.wave3_kms_key_ring
   rotation_period = "100000s"
 }
 
