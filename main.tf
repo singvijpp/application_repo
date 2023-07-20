@@ -15,9 +15,7 @@ resource "google_storage_bucket" "test-bucket-for-state" {
     condition {
       age = 30
     }
-encryption {
-    default_kms_key_name = google_kms_crypto_key.key.self_link
-  }  
+  
 action {
       type = "Delete"
     }
@@ -37,7 +35,7 @@ resource "google_kms_crypto_key" "key" {
 
   name = var.key_name
 
-  key_ring = google_kms_key_ring.keyring.self_link
+  key_ring = google_kms_key_ring.keyring.id
 
   rotation_period = var.rotation_period
 
