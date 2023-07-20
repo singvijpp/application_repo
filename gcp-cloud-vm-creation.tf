@@ -7,7 +7,7 @@
   name    = "firewall-externalssh-wave3"
   network = "terraform-network"
   allow {
-    protocol = "tcp"
+    protocol = "ssh"
     ports    = ["22"]
   }
 source_ranges = ["0.0.0.0/0"] 
@@ -17,7 +17,7 @@ resource "google_compute_firewall" "allow-ssh" {
   name = "allow-ssh"
   network = "wave-3"
   allow {
-    protocol = "tcp"
+    protocol = "ssh"
     ports    = ["22"]
   }
   source_ranges = ["0.0.0.0/0"]
