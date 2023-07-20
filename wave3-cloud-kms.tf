@@ -10,7 +10,7 @@ resource "google_kms_crypto_key" "wave3_kms_crypto_key" {
 }
 
 resource "google_storage_bucket_iam_member" "wave3_kms_bucket_iam_member" {
-  bucket = google_storage_bucket.wave3_cicd_bucket.name
+  bucket = google_storage_bucket.wave3_cicd_bucket
   role   = "roles/storage.objectViewer"
   member = "serviceAccount:${google_kms_crypto_key.wave3_kms_crypto_key.primary_key_ring}"
 }
