@@ -19,10 +19,10 @@ source_ranges = ["0.0.0.0/0"]
   allow {
     protocol = "tcp"
     ports    = ["22"]
-  }*/
+  }
   source_ranges = ["0.0.0.0/0"]
   target_tags = ["gcpwave3-linux-vm"]
-}
+}*/
 /*resource "google_compute_instance" "vm_instance" {
     name         = "gcpwave3-linux-vm"
     machine_type = "f1-micro"
