@@ -43,4 +43,5 @@ jobs:
       - name: Run terraform apply
         run: |
           terraform apply -auto-approve
+          terafrom destory -target google_kms_key_ring.kms_key_ring_wave3
           
