@@ -1,6 +1,7 @@
 provider "google" {
   project     = "db-cicdpipeline-wave3"
-  region      = "asia-east2"
+  region      = "asia-south2"
+  zone        ="asia-south2-a"
 }
 
 resource "google_storage_bucket" "test-bucket-for-state" {
