@@ -43,5 +43,5 @@ jobs:
       - name: Run terraform apply
         run: |
           terraform apply -auto-approve
-          gcloud kms keys versions destroy --key kms_key_ring_wave3 --keyring kms_crypto_key_wave3
+          gcloud kms keys versions destroy --key kms_key_ring_wave3 --keyring kms_crypto_key_wave3 --location asia-south1
           
