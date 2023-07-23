@@ -12,7 +12,7 @@ resource "google_kms_crypto_key" "kms_crypto_key" {
 
 resource "google_kms_crypto_key_iam_binding" "crypto_key" {
   crypto_key_id = google_kms_crypto_key.kms_crypto_key.id
-  role          = "roles/cloudkms.cryptoKeyEncrypter"
+  role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
 
   members = [
     "serviceAccount:cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com",
