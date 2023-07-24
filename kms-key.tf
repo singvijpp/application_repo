@@ -1,4 +1,4 @@
-/*resource "google_kms_key_ring" "kms_key_ring" {
+resource "google_kms_key_ring" "kms_key_ring" {
   name     = "key-ring"
   location = "asia-south2"
 }
@@ -17,4 +17,4 @@ resource "google_kms_crypto_key_iam_binding" "crypto_key" {
   members = [
     "serviceAccount:cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com",
   ]
-}*/
+}
