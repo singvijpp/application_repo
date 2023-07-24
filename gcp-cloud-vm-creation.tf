@@ -10,6 +10,7 @@ resource "google_compute_firewall" "allow-ssh" {
     protocol = "tcp"
     ports    = ["22"]
   }
+disabled        = false
   source_ranges = ["0.0.0.0/0"]
   target_tags = ["gcpwave3-linux-vm"]
 }*/
