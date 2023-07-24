@@ -1,4 +1,4 @@
-/*resource "google_storage_bucket" "Demo" {
+resource "google_storage_bucket" "Demo" {
   name          = "Demo-terraform_bucket_cicd"
   location      = "asia-south2"
   force_destroy = true
@@ -15,4 +15,4 @@
       type = "Delete"
     }
   }
-}*/
+}
