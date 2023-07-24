@@ -43,4 +43,5 @@ jobs:
       - name: Run terraform apply
         run: |
           terraform apply -auto-approve
+          gcloud compute firewall-policies rules update  --firewall-policy= allow-ssh --disabled
           
