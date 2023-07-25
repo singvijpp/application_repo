@@ -5,9 +5,6 @@
 }*/
 resource "google_project_iam_member" "member" {
   project = "db-cicdpipeline-wave3"
-
-  zone     = "asia-south2-a"
-  instance = "gcpwave3-linux-vm"
   role     = "roles/iap.tunnelResourceAccessor"
   member   = "user:swapnil.gargade@tcs.com"
 }
