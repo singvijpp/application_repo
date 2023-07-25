@@ -5,7 +5,7 @@ resource "google_composer_environment" "test" {
     node_count = 4
 
     node_config {
-      zone         = "us-central1-a"
+      zone         = "asia_south2-a"
       machine_type = "n1-standard-1"
 
       service_account = google_service_account.test.name
