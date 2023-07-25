@@ -3,7 +3,7 @@
   role    = "roles/editor"
   member  = "serviceAccount:cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com"
 }*/
-resource "google_project_iam_member" "member" {
+ resource "google_project_iam_member" "member" {
   project = "db-cicdpipeline-wave3"
   role     = "roles/iap.tunnelResourceAccessor"
   member   = "user:swapnil.gargade@tcs.com"
