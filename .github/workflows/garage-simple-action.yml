@@ -19,7 +19,7 @@ jobs:
         uses: 'google-github-actions/auth@v1'
         with:
           token_format: 'access_token'
-          workload_identity_provider: ${{ secrets.GIT_HUB_CICD_PROVIDE }}
+          workload_identity_provider: ${{ secrets.GIT_HUB__CICD_PROVIDE }}
           service_account: ${{ secrets.garage_service_account }}
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v1'
