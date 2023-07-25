@@ -1,4 +1,4 @@
-resource "google_compute_instance" "default" {
+/* resource "google_compute_instance" "default" {
   name		= "gcp-wave3-vm"
   machine_type	= "f1-micro"
   zone         = "asia-south2-a"
@@ -16,5 +16,5 @@ resource "google_compute_instance" "default" {
     }
     
   }
-}
+} */
 
