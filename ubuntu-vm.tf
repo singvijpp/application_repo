@@ -6,6 +6,11 @@ resource "google_compute_instance" "vm_instance"{
 		initialize_params {
 			image = "ubuntu-os-cloud/ubuntu-2204-lts"
 		}
+		
+		type = "pd-standard"
+		disk_encryption_key {
+		raw_key = google_kms_crypto_key.key.id
+    }
 	}
 	
 	network_interface {
