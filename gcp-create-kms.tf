@@ -4,7 +4,7 @@
 project = "db-cicdpipeline-wave3"
 
 region = "asia-south2-a"
-} */
+} 
 
 resource "google_kms_key_ring" "kms_key_ring_gcp" {
 
@@ -35,6 +35,6 @@ resource "google_kms_crypto_key_iam_binding" "crypto_key" {
 
   members       = [ "serviceAccount:cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com" ]
 
-  }
+  } */
 
 
