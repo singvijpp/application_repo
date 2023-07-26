@@ -1,26 +1,40 @@
-resource "google_composer_environment" "test" {
-  name   = "example-composer-env"
-  region = "asia_south2"
+provider "google-beta" {
+  project = "db-cicdpipeline-wave3"
+  region  = "asia-south2"
+}
+
+resource "google_project_service" "composer_api" {
+  provider = google-beta
+  project = "db-cicdpipeline-wave3"
+  service = "composer.googleapis.com"
+  // Disabling Cloud Composer API might irreversibly break all other
+  // environments in your project.
+  disable_on_destroy = false
+}
+
+resource "google_service_account" "custom_service_account" {
+  provider = google-beta
+  account_id   = "custom-service-account"
+  display_name = "Example Custom Service Account"
+}
+
+resource "google_project_iam_member" "custom_service_account" {
+  provider = google-beta
+  project  = "db-cicdpipeline-wave3"
+  member   = format("serviceAccount:%s", google_service_account.custom_service_account.email)
+  // Role for Public IP environments
+  role     = "roles/composer.worker"
+}
+
+resource "google_composer_environment" "example_environment" {
+  provider = google-beta
+  name = "wave3-cicd-composer-env"
+
   config {
-    node_count = 4
 
     node_config {
-      zone         = "asia_south2-a"
-      machine_type = "n1-standard-1"
-
-      service_account = google_service_account.test.name
+      service_account = google_service_account.custom_service_account.email
     }
 
-    database_config {
-      machine_type = "db-n1-standard-2"
-    }
-
-    web_server_config {
-      machine_type = "composer-n1-webserver-2"
-    }
   }
-}
-resource "google_service_account" "test" {
-  account_id   = "composer-env-account"
-  display_name = "Test Service Account for Composer Environment"
 }
