@@ -5,11 +5,9 @@ resource "google_compute_instance" "wave3_compute_linux_instance" {
   boot_disk {
     initialize_params {
       image = "debian-cloud/debian-11"
-      labels = {
-        my_label = "wave3-cicd"
-    }
-  }
-
+      labels = { my_label = "wave3-cicd" }
+	}
+	}
   attached_disk {
     source      = google_compute_disk.wave3_compute_linux_disk.id
     device_name = "extra-disk"
@@ -20,11 +18,9 @@ resource "google_compute_instance" "wave3_compute_linux_instance" {
     access_config {}
   }
  }
-
 resource "google_compute_disk" "wave3_compute_linux_disk" {
   name  = "wave3-compute-linux-disk"
   type  = "pd-ssd"
   zone      = "asia-south2-a"
   size  = 8
-}
 }
