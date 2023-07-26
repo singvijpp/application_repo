@@ -1,5 +1,5 @@
 
-provider "google" {
+/* provider "google" {
 
 project = "db-cicdpipeline-wave3"
 
@@ -40,6 +40,6 @@ resource "google_kms_crypto_key_iam_binding" "crypto_key" {
 
   members       = [ "serviceAccount:cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com" ]
 
-  } 
+  } */
 
 
