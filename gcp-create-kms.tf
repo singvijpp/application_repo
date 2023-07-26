@@ -29,7 +29,7 @@ resource "google_kms_crypto_key" "kms_crypto_key_temp" {
 
   name = "kms_crypto_key_temp"
 
-  key_ring = "google_kms_key_ring.kms_key_ring_temp.id"
+  key_ring = "${google_kms_key_ring.kms_key_ring_gcp.self_link}"
 
 
   version_template {
