@@ -1,6 +1,6 @@
-/*terraform {
+terraform {
   backend "gcs" {
-    bucket = "cicd-action"
+    bucket = "gcp_state_cicd"
     prefix = "terraform/state"
   }
-}*/
+}
