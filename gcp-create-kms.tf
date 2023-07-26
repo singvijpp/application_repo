@@ -3,7 +3,7 @@ provider "google" {
 
 project = "db-cicdpipeline-wave3"
 
-region = "asia-south2-a"
+region = "asia-south2"
 }  
 
 resource "google_project_service" "project_cloudkms" {
