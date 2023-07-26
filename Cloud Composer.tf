@@ -31,6 +31,8 @@ resource "google_composer_environment" "test" {
     }
     environment_size = "ENVIRONMENT_SIZE_SMALL"
     node_config {
+      network    = google_compute_network.test.id
+      subnetwork = google_compute_subnetwork.test.id
       service_account = google_service_account.test.name
     }
   }
