@@ -25,5 +25,6 @@ resource "google_compute_instance" "wave3_compute_windows_instance" {
 resource "google_compute_disk" "wave3_compute_windows_disk" {
   name  = "wave3-compute-windows-disk"
   type  = "pd-ssd"
+  zone      = "asia-south2-a"
    size  = 8
 }
