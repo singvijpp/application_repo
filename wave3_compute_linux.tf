@@ -10,7 +10,6 @@ resource "google_compute_instance" "wave3_compute_linux_instance" {
   attached_disk {
     source      = google_compute_disk.wave3_compute_linux_disk.id
     device_name = "extra-disk"
-	location = "asia-south2"
   }
 
   network_interface {
