@@ -5,7 +5,7 @@
 */
 terraform {
   backend "gcs" {
-    bucket = "cicd-action"
+    bucket = "gcp_wave3_cicd"
     prefix = "terraform/state"
   }
 }
