@@ -10,7 +10,7 @@ resource "google_kms_key_ring" "kms_key_ring_test" {
 
   name = "kms_key_ring_test"
 
-  region = "asia-south2-a"
+  location = "asia-south2"
 
 }
 
