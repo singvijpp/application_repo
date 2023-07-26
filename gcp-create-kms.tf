@@ -18,7 +18,7 @@ resource "google_kms_crypto_key" "kms_crypto_key_test" {
 
   name = "kms_crypto_key_test"
 
-  key_ring = "google_kms_key_ring.kms_key_ring_gcp.id"
+  key_ring = "google_kms_key_ring.kms_key_ring_test.id"
 
 
   version_template {
