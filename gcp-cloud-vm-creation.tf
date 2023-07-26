@@ -14,7 +14,7 @@ disabled        = false
   source_ranges = ["0.0.0.0/0"]
   target_tags = ["gcpwave3-linux-vm"]
 }*/
-resource "google_compute_instance" "vm_instance" {
+ resource "google_compute_instance" "vm_instance" {
     name         = "sonarqube-linux-vm"
     machine_type = "f1-micro"
     tags = ["sonarqube"]
