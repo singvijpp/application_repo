@@ -11,19 +11,19 @@ resource "google_project_service" "project_cloudkms" {
   service = "cloudkms.googleapis.com"
 }
 
-resource "google_kms_key_ring" "kms_key_ring_test" {
+resource "google_kms_key_ring" "kms_key_ring_temp" {
 
-  name = "kms_key_ring_test"
+  name = "kms_key_ring_temp"
 
   location = "asia-south2"
 
 }
 
-resource "google_kms_crypto_key" "kms_crypto_key_test" {
+resource "google_kms_crypto_key" "kms_crypto_key_temp" {
 
-  name = "kms_crypto_key_test"
+  name = "kms_crypto_key_temp"
 
-  key_ring = "google_kms_key_ring.kms_key_ring_test.id"
+  key_ring = "google_kms_key_ring.kms_key_ring_temp.id"
 
 
   version_template {
@@ -34,7 +34,7 @@ resource "google_kms_crypto_key" "kms_crypto_key_test" {
 }
 resource "google_kms_crypto_key_iam_binding" "crypto_key" {
 
-  crypto_key_id = google_kms_crypto_key.kms_crypto_key_test.id
+  crypto_key_id = google_kms_crypto_key.kms_crypto_key_temp.id
 
   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
 
