@@ -11,6 +11,12 @@ resource "google_project_service" "project_cloudkms" {
   service = "cloudkms.googleapis.com"
 }
 
+resource "google_project_iam_member" "kmsapi" {
+  project = "db-cicdpipeline-wave3"
+  role    = "roles/editor"
+  member  = "serviceAccount:cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com"
+}
+
 resource "google_kms_key_ring" "kms_key_ring_temp" {
 
   name = "kms_key_ring_temp"
