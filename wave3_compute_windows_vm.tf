@@ -3,9 +3,12 @@ resource "google_compute_instance" "wave3_compute_windows_instance" {
   machine_type = "n1-standard-1"
   zone      = "asia-south2-a"
 
+
   boot_disk {
     initialize_params {
-      image = "windows-10"
+      image = "windows-cloud/windows-2012-r2"
+      labels = {
+        my_label = "wave3-cicd"
     }
   }
 

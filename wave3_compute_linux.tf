@@ -4,7 +4,9 @@ resource "google_compute_instance" "wave3_compute_linux_instance" {
   zone      = "asia-south2-a"
   boot_disk {
     initialize_params {
-      image = "ubuntu-latest"
+      image = "debian-cloud/debian-11"
+      labels = {
+        my_label = "wave3-cicd"
     }
   }
 
