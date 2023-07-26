@@ -1,4 +1,4 @@
-resource "google_compute_instance" "wave3_compute_windows_instance" {
+/*resource "google_compute_instance" "wave3_compute_windows_instance" {
   name         = "wave3-compute-windows-instance"
   machine_type = "n1-standard-1"
   zone      = "asia-south2-a"
@@ -30,4 +30,4 @@ resource "google_compute_disk" "wave3_compute_windows_disk" {
   type  = "pd-ssd"
   zone      = "asia-south2-a"
    size  = 8
-}
+}*/

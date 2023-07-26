@@ -17,15 +17,14 @@ resource "google_compute_instance" "wave3_compute_linux_instance" {
 
   network_interface {
     network = "default"
-    access_config {
-      // Ephemeral IP
-    }
+    access_config {}
   }
-}
-}
+ }
+
 resource "google_compute_disk" "wave3_compute_linux_disk" {
   name  = "wave3-compute-linux-disk"
   type  = "pd-ssd"
   zone      = "asia-south2-a"
   size  = 8
+}
 }
