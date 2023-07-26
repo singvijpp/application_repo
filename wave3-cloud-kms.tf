@@ -1,6 +1,6 @@
 resource "google_kms_key_ring" "wave3_kms_key_ring" {
   name     = "wave3-key-ring"
-  location = "global"
+  location = "asia-south2"
 }
 
 resource "google_storage_bucket" "storage_bucket" {
@@ -17,7 +17,7 @@ resource "google_storage_bucket" "storage_bucket" {
       age = 30
     }
 encryption {
-    default_kms_key_name = google_kms_crypto_key.example_crypto_key.self_link
+    default_kms_key_name = google_kms_crypto_key.example_crypto_key.name
   }  
 action {
       type = "Delete"
@@ -27,6 +27,6 @@ action {
 
 # Create a KMS crypto key
 resource "google_kms_crypto_key" "example_crypto_key" {
-  name      = "example-crypto-key"
-  key_ring  = google_kms_key_ring.wave3_kms_key_ring.self_link
+  name      = "example_crypto_key"
+  key_ring  = google_kms_key_ring.wave3_kms_key_ring.id
 }
