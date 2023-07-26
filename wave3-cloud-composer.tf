@@ -24,6 +24,7 @@ resource "google_project_iam_member" "custom_service_account" {
   member   = format("serviceAccount:%s", google_service_account.custom_service_account.email)
   // Role for Public IP environments
   role     = "roles/composer.worker"
+  role 	   = "roles/composer.ServiceAgentV2Ext"
 }
 
 resource "google_composer_environment" "example_environment" {
