@@ -15,9 +15,9 @@ disabled        = false
   target_tags = ["gcpwave3-linux-vm"]
 }*/
 resource "google_compute_instance" "vm_instance" {
-    name         = "gcpwave3-linux-vm"
+    name         = "sonarqube-linux-vm"
     machine_type = "f1-micro"
-    tags = ["ssh"]
+    tags = ["sonarqube"]
   
     boot_disk {
       initialize_params {
