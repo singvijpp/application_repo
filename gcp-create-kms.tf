@@ -6,6 +6,11 @@ project = "db-cicdpipeline-wave3"
 region = "asia-south2-a"
 } 
 
+resource "google_project_service" "project_cloudkms" {
+  project = "db-cicdpipeline-wave3"
+  service = "cloudkms.googleapis.com"
+}
+
 resource "google_kms_key_ring" "kms_key_ring_test" {
 
   name = "kms_key_ring_test"
