@@ -16,9 +16,6 @@ resource "google_storage_bucket" "storage_bucket" {
     condition {
       age = 30
     }
-encryption {
-    default_kms_key_name = google_kms_crypto_key.example_crypto_key.name
-  }  
 action {
       type = "Delete"
     }
