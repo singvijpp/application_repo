@@ -1,4 +1,4 @@
-resource "google_compute_instance" "KMSVM" {
+/*resource "google_compute_instance" "KMSVM" {
   name         = "KMS-VM"
   machine_type = "e2-medium"
   zone         = "asia-south2-a"
@@ -13,3 +13,4 @@ boot_disk {
     access_config {} // This enable Ephemeral public IP  
   }
 }
+*/
