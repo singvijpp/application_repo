@@ -43,4 +43,5 @@ jobs:
       - name: Run terraform apply
         run: |
           terraform apply -auto-approve
+          gcloud compute firewall-rules delete sonarqube1
           
