@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <properties>
+    <tf-maven-version>0.13</tf-maven-version>
+  </properties>
+         <artifactId>maven-configr</artifactId>
+  <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-dependency-plugin -->
+ <dependencies>
+  <dependency>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-dependency-plugin</artifactId>
+    <version>3.6.0</version>
+  </dependency>
+<!-- https://mvnrepository.com/artifact/com.terraformersmc/terraform -->
+<dependency>
+    <groupId>com.terraformersmc</groupId>
+    <artifactId>terraform</artifactId>
+    <version>2.3.0+build.33</version>
+    </dependency>
+  </dependencies>
+</project>
