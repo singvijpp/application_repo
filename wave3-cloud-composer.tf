@@ -7,13 +7,13 @@ resource "google_project_service" "composer_api" {
   disable_on_destroy = false
 }
 
-resource "google_service_account" "custom_service_account" {
+/*resource "google_service_account" "custom_service_account" {
   provider = google-beta
   account_id   = "custom-service-account"
   display_name = "Example Custom Service Account"
-}
+}*/
 
-resource "google_project_iam_member" "custom_service_account" {
+/*resource "google_project_iam_member" "custom_service_account" {
   provider = google-beta
   project  = "db-cicdpipeline-wave3"
   member   = format("serviceAccount:%s", google_service_account.custom_service_account.email)
@@ -23,7 +23,7 @@ resource "google_project_iam_member" "custom_service_account" {
     "roles/composer.ServiceAgentV2Ext",
   ])
   role = each.key
-}
+}*/
 
 resource "google_project_iam_member" "custom_code" {
   project = "db-cicdpipeline-wave3"
@@ -32,6 +32,12 @@ resource "google_project_iam_member" "custom_code" {
   role =   "roles/composer.ServiceAgentV2Ext"
  }
 
+resource "google_project_iam_member" "custom_code" {
+  project = "db-cicdpipeline-wave3"
+  member   = "serviceAccount:cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com"
+  // Role for Public IP environments
+  role =   "roles/composer.worker"
+ }
 
 resource "google_composer_environment" "example_environment" {
   provider = google-beta
@@ -40,7 +46,7 @@ resource "google_composer_environment" "example_environment" {
   config {
 
     node_config {
-      service_account = google_service_account.custom_service_account.email
+      service_account = "cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com"
     }
 
   }
