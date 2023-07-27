@@ -1,4 +1,4 @@
-resource "google_project_service" "composer_api" {
+resource "google_project_service" "composer_env_sa" {
   provider = google-beta
   project = "db-cicdpipeline-wave3"
   service = "composer.googleapis.com"
@@ -6,28 +6,33 @@ resource "google_project_service" "composer_api" {
   // environments in your project.
   disable_on_destroy = false
 }
-resource "google_project_iam_member" "custom_code" {
-  project = "db-cicdpipeline-wave3"
-  member   = "serviceAccount:service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com"
-  // Role for Public IP environments
-  role =   "roles/composer.ServiceAgentV2Ext"
- }
+resource "google_project_service_identity" "composer_sa" {
+  provider = google-beta
+  project  = "db-cicdpipeline-wave3"
+  service  = "composer.googleapis.com"
+}
 
-resource "google_project_iam_member" "worker_code" {
+resource "google_project_iam_member" "composer_worker" {
   project = "db-cicdpipeline-wave3"
-  member   = "serviceAccount:service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com"
-  // Role for Public IP environments
-  role =   "roles/composer.worker"
- }
+  role    = "roles/composer.worker"
+  member  = "serviceAccount:${google_service_account.composer_env_sa.email}"
+}
 
-resource "google_composer_environment" "example_environment" {
+resource "google_service_account_iam_member" "custom_service_account" {
+  provider           = google-beta
+  service_account_id = google_service_account.composer_env_sa.id
+  role               = "roles/composer.ServiceAgentV2Ext"
+  member             = "serviceAccount:${google_project_service_identity.composer_sa.email}"
+}
+
+resource "google_composer_environment" "composer_environment" {
   provider = google-beta
   name = "wave3-cicd-composer-env"
 
   config {
 
     node_config {
-      service_account = "service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com"
+      service_account = google_service_account.composer_env_sa.email
     }
 
   }
