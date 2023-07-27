@@ -4,13 +4,13 @@ provider "google" {
 }
 
 provider "google-beta" {
-  project = "db-cicdpipeline-wave3"
-  region  = "asia-south2"
+  project = var.project_id
+  region  = var.region
 }
 
 terraform {
   backend "gcs" {
-    bucket = "cicd-action"
+    bucket = var.backend_bucket
     prefix = "terraform/state"
   }
 }
