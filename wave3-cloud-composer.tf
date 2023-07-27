@@ -1,8 +1,3 @@
-provider "google-beta" {
-  project = "db-cicdpipeline-wave3"
-  region  = "asia-south2"
-}
-
 resource "google_project_service" "composer_api" {
   provider = google-beta
   project = "db-cicdpipeline-wave3"
