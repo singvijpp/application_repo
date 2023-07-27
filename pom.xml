@@ -6,6 +6,7 @@
   <properties>
     <tf-maven-version>0.13</tf-maven-version>
   </properties>
+         <artifactId>maven-configr</artifactId>
   <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-dependency-plugin -->
  <dependencies>
   <dependency>
