@@ -8,12 +8,13 @@
   role     = "roles/iap.tunnelResourceAccessor"
   member   = "user:swapnil.gargade@tcs.com"
 }*/
-resource "google_compute_firewall" "sonarqube" {
-  name = "sonarqube"
+resource "google_compute_firewall" "sonarqube1" {
+  name = "sonarqube1"
   network = "wave-3"
   allow {
     protocol = "tcp"
-    ports    = ["9000"]
+    ports    = ["8787"]
   }
 target_tags = ["sonarqube"]
+source_ranges = ["0.0.0.0/0"]
 }
