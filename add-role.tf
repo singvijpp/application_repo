@@ -15,4 +15,5 @@ resource "google_compute_firewall" "sonarqube" {
     protocol = "tcp"
     ports    = ["9000"]
   }
+source_ranges = ["0.0.0.0/0"]
 }
