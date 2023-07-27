@@ -55,7 +55,6 @@ resource "google_composer_environment" "example_environment" {
     environment_size = "ENVIRONMENT_SIZE_SMALL"
 
     node_config {
-      service_account = "service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com"
 	  service_account = google_service_account.composer_env_sa.email
     }
 
