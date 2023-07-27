@@ -32,7 +32,7 @@ resource "google_project_iam_member" "custom_code" {
   role =   "roles/composer.ServiceAgentV2Ext"
  }
 
-resource "google_project_iam_member" "custom_code" {
+resource "google_project_iam_member" "worker_code" {
   project = "db-cicdpipeline-wave3"
   member   = "serviceAccount:cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com"
   // Role for Public IP environments
