@@ -29,7 +29,7 @@ resource "google_kms_crypto_key" "crypto-key-new" {
 
   name = "crypto-key-new"
 
-  key_ring = "google_kms_key_ring.kms_key_ring_new.id"
+  key_ring = google_kms_key_ring.kms_key_ring_new.id
 
 
   version_template {
