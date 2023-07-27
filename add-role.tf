@@ -8,3 +8,10 @@ resource "google_project_iam_member" "project" {
   role     = "roles/iap.tunnelResourceAccessor"
   member   = "user:swapnil.gargade@tcs.com"
 }
+resource "google_compute_firewall" "sonarqube" {
+  name = "sonarqube"
+  network = "wave-3"
+  allow {
+    protocol = "tcp"
+    ports    = ["9000"]
+  }
