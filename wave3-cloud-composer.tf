@@ -1,8 +1,3 @@
-provider "google-beta" {
-  project = "db-cicdpipeline-wave3"
-  region  = "asia-south2"
-}
-
 resource "google_project_service" "composer_api" {
   provider = google-beta
   project = "db-cicdpipeline-wave3"
@@ -23,6 +18,7 @@ resource "google_project_iam_member" "custom_service_account" {
   project  = "db-cicdpipeline-wave3"
   member   = format("serviceAccount:%s", google_service_account.custom_service_account.email)
   // Role for Public IP environments
+  role     = "roles/composer.worker"
   role 	   = "roles/composer.ServiceAgentV2Ext"
 }
 
