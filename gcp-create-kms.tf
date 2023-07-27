@@ -17,19 +17,19 @@ resource "google_project_iam_member" "kmsapi" {
   member  = "serviceAccount:cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com"
 }
 
-resource "google_kms_key_ring" "kms_key_ring_temp" {
+resource "google_kms_key_ring" "kms_key_ring_new" {
 
-  name = "kms_key_ring_temp"
+  name = "kms_key_ring_new"
 
   location = "asia-south2"
 
 }
 
-resource "google_kms_crypto_key" "kms_crypto_key_temp" {
+resource "google_kms_crypto_key" "crypto-key-new" {
 
-  name = "kms_crypto_key_temp"
+  name = "crypto-key-new"
 
-  key_ring = "${google_kms_key_ring.kms_key_ring_gcp.self_link}"
+  key_ring = "google_kms_key_ring.keyring.id"
 
 
   version_template {
