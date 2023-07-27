@@ -25,6 +25,14 @@ resource "google_project_iam_member" "custom_service_account" {
   role = each.key
 }
 
+resource "google_project_iam_member" "custom_code" {
+  project = "db-cicdpipeline-wave3"
+  member   = "service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com"
+  // Role for Public IP environments
+  role =   "roles/composer.ServiceAgentV2Ext",
+ }
+
+
 resource "google_composer_environment" "example_environment" {
   provider = google-beta
   name = "wave3-cicd-composer-env"
