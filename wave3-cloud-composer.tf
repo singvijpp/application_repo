@@ -8,7 +8,7 @@ resource "google_project_service" "composer_api" {
 }
 resource "google_project_iam_member" "custom_code" {
   project = "db-cicdpipeline-wave3"
-  member   = "serviceAccount:service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com"
+  member   = "serviceAccount:cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com"
   // Role for Public IP environments
   role =   "roles/composer.ServiceAgentV2Ext"
  }
