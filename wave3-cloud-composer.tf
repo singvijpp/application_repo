@@ -20,7 +20,7 @@ resource "google_project_iam_member" "custom_service_account" {
   // Role for Public IP environments
   for_each = toset([
     "roles/composer.worker",
-    "roles/composer.ServiceAgentV2Ext,
+    "roles/composer.ServiceAgentV2Ext",
   ])
   role = each.key
 }
