@@ -13,8 +13,6 @@
 
 #
 
-
-
 resource "google_project_service" "composer" {
   project = "db-cicdpipeline-wave3"
   service = "composer.googleapis.com"
@@ -66,8 +64,10 @@ resource "google_composer_environment" "new_composer_env" {
     }
     environment_size = "ENVIRONMENT_SIZE_SMALL"
 
-    node_config {
-      service_account = google_service_account.composer_env_sa.email
+	  node_config {
+		network         = "wave-3"
+		subnetwork      = "asia-south-1"
+		service_account = google_service_account.composer_env_sa.email
     }
   }
 }
