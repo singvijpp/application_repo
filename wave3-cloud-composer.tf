@@ -11,6 +11,10 @@
 #	- Creates a new Cloud Function and deploys the function source code from the pubsub_function.zip file to the Cloud Storage bucket
 #	- Uploads the example DAG source code from the specified file into the Cloud Composer bucket
 
+#
+
+
+
 resource "google_project_service" "composer" {
   project = "db-cicdpipeline-wave3"
   service = "composer.googleapis.com"
@@ -77,7 +81,7 @@ resource "google_composer_environment" "new_composer_env" {
 # Comment this section to use an existing service account
 resource "google_service_account" "composer_env_sa" {
   project      = "db-cicdpipeline-wave3"
-  account_id   = "cicd-wave3-serviceaccot"
+  account_id   = "cicd-wave3-composer-sa"
   display_name = "Test Service Account for Composer Environment deployment "
 }
 
