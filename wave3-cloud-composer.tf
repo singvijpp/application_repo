@@ -122,7 +122,7 @@ resource "google_service_account_iam_member" "custom_service_account" {
 #########################
 
 resource "google_project_service" "cloud_function" {
-  project = data.google_project.project.project_id
+  project = "db-cicdpipeline-wave3"
   service = "cloudfunctions.googleapis.com"
 
   timeouts {
@@ -140,7 +140,7 @@ resource "google_project_service" "cloud_function" {
 #                      #
 ########################
 resource "google_pubsub_topic" "trigger" {
-  project                    = data.google_project.project.project_id
+  project                    = "db-cicdpipeline-wave3"
   name                       = "dag-topic-trigger"
   message_retention_duration = "86600s"
 }
@@ -151,17 +151,17 @@ resource "google_pubsub_topic" "trigger" {
 #                        #
 ##########################
 resource "google_cloudfunctions_function" "pubsub_function" {
-  project = data.google_project.project.project_id
+  project = "db-cicdpipeline-wave3"
   name    = "pubsub-publisher"
   runtime = "python310"
-  region  = "us-central1"
+  region  = "asia-south2"
 
   available_memory_mb   = 128
-  source_archive_bucket = google_storage_bucket.cloud_function_bucket.name
+  source_archive_bucket = "db-cicd-wave3"
   source_archive_object = google_storage_bucket_object.cloud_function_source.output_name
   timeout               = 60
   entry_point           = "pubsub_publisher"
-  service_account_email = "${data.google_project.project.number}-compute@developer.gserviceaccount.com"
+  service_account_email = "cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com"
   trigger_http          = true
 
 }
