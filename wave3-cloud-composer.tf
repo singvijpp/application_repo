@@ -113,3 +113,69 @@ resource "google_service_account_iam_member" "custom_service_account" {
   role               = "roles/composer.ServiceAgentV2Ext"
   member             = "serviceAccount:${google_project_service_identity.composer_sa.email}"
 }
+
+
+#########################
+#                       #
+# Enable Cloud F api 	#
+#                       #
+#########################
+
+resource "google_project_service" "cloud_function" {
+  project = data.google_project.project.project_id
+  service = "cloudfunctions.googleapis.com"
+
+  timeouts {
+    create = "30m"
+    update = "40m"
+  }
+
+  disable_dependent_services = true
+  disable_on_destroy         = false
+}
+
+########################
+#                      #
+# Creates PubSub topic #
+#                      #
+########################
+resource "google_pubsub_topic" "trigger" {
+  project                    = data.google_project.project.project_id
+  name                       = "dag-topic-trigger"
+  message_retention_duration = "86600s"
+}
+
+##########################
+#                        #
+# Creates Cloud Function #
+#                        #
+##########################
+resource "google_cloudfunctions_function" "pubsub_function" {
+  project = data.google_project.project.project_id
+  name    = "pubsub-publisher"
+  runtime = "python310"
+  region  = "us-central1"
+
+  available_memory_mb   = 128
+  source_archive_bucket = google_storage_bucket.cloud_function_bucket.name
+  source_archive_object = google_storage_bucket_object.cloud_function_source.output_name
+  timeout               = 60
+  entry_point           = "pubsub_publisher"
+  service_account_email = "${data.google_project.project.number}-compute@developer.gserviceaccount.com"
+  trigger_http          = true
+
+}
+
+
+###################
+#                 #
+# Upload Dag file #
+#                 #
+###################
+
+resource "google_storage_bucket_object" "composer_dags_source" {
+  name   = "dags/dag-pubsub-sensor-py-file"
+  bucket = trimprefix(trimsuffix(google_composer_environment.new_composer_env.config[0].dag_gcs_prefix, "/dags"), "gs://")
+  source = "./pubsub_trigger_response_dag.py"
+}
+# [END triggering_dags_with_functions_and_pubsub]
