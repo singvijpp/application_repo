@@ -69,15 +69,7 @@ resource "google_composer_environment" "new_composer_env" {
 		subnetwork      = "asia-south-1"
 		service_account = google_service_account.composer_env_sa.email
     }
-	dynamic "encryption_config" {
-      for_each = var.kms_key_name != null ? [
-        {
-          kms_key_name = var.kms_key_name
-      }] : []
-      content {
-        kms_key_name = encryption_config.value["kms_key_name"]
-      }
-    }
+	
   }
 }
 
@@ -150,6 +142,15 @@ resource "google_pubsub_topic" "trigger" {
 # Creates Cloud Function #
 #                        #
 ##########################
+
+resource "google_storage_bucket_object" "cloud_function_source" {
+  name   = "pubsub-function-zip-file"
+  bucket = "db-cicd-wave3"
+  # Uncomment to upload a zip containing the cloudfunction source code in zip format
+  #source = "/path/to/cloudfunction/source.zip"
+  content = "Data as string to be uploaded"
+}
+
 resource "google_cloudfunctions_function" "pubsub_function" {
   project = "db-cicdpipeline-wave3"
   name    = "pubsub-publisher"
