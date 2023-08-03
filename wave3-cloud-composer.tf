@@ -106,13 +106,11 @@ resource "google_project_iam_member" "composer_worker" {
   project = "db-cicdpipeline-wave3"
   role    = "roles/composer.worker"
   member  = "serviceAccount:${google_service_account.composer_env_sa.email}"
-}
-
-resource "google_service_account_iam_member" "custom_service_account_kms" {
-  provider           = google-beta
-  service_account_id = google_service_account.composer_env_sa.id
-  role    			 = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-  member             = "serviceAccount:service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com"
+}  
+resource "google_kms_crypto_key_iam_binding" "wave3-crypto-key-iam" {
+  crypto_key_id = "crypto-key-new"
+  role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+  members       = ["serviceAccount:service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com,serviceAccount:${google_service_account.composer_env_sa.email}"]
   }
 resource "google_service_account_iam_member" "custom_service_account" {
   provider           = google-beta
