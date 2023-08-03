@@ -66,8 +66,8 @@ resource "google_composer_environment" "new_composer_env" {
 		service_account = google_service_account.composer_env_sa.email
     }
 	encryption_config {
-			kms_key_name = "projects/db-cicdpipeline-wave3/locations/asia-south2/keyRings/Key-ring/cryptoKeys/crypto-key"
-				
+			kms_key_name = "projects/db-cicdpipeline-wave3/locations/asia-south2/service_account/secrets.garage_service_account/keyRings/Key-ring/cryptoKeys/crypto-key"
+			
     }
 	recovery_config	{
 		scheduled_snapshots_config {
