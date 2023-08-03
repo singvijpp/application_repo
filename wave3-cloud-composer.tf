@@ -69,7 +69,7 @@ resource "google_composer_environment" "new_composer_env" {
 	recovery_config	{
 		scheduled_snapshots_config {
 			enabled = true 
-			snapshot_location = "gs://asia-south2-composer-enviro-0b678a75-bucket/environment_snapshots2"
+			snapshot_location = "gs://db-cicd-wave3/environment_snapshots2"
 			snapshot_creation_schedule = "0 0 * * *"
 			time_zone =                  "UTC+01"
 
