@@ -9,6 +9,12 @@
 
 #
 
+resource "google_project_iam_member" "composer_worker_kms" {
+  project = "db-cicdpipeline-wave3"
+  role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+  member  = "serviceAccount:service-"db-cicdpipeline-wave3"@compute-system.iam.gserviceaccount.com"
+}
+
 resource "google_project_service" "composer" {
   project = "db-cicdpipeline-wave3"
   service = "composer.googleapis.com"
@@ -105,11 +111,6 @@ resource "google_project_service_identity" "composer_sa" {
 resource "google_project_iam_member" "composer_worker" {
   project = "db-cicdpipeline-wave3"
   role    = "roles/composer.worker"
-  member  = "serviceAccount:${google_service_account.composer_env_sa.email}"
-}
-resource "google_project_iam_member" "composer_worker_kms" {
-  project = "db-cicdpipeline-wave3"
-  role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
   member  = "serviceAccount:${google_service_account.composer_env_sa.email}"
 }
 resource "google_service_account_iam_member" "custom_service_account" {
