@@ -107,7 +107,7 @@ resource "google_project_iam_member" "composer_worker" {
   role    = "roles/composer.worker"
   member  = "serviceAccount:${google_service_account.composer_env_sa.email}"
 }
-resource "google_project_iam_member" "composer_worker" {
+resource "google_project_iam_member" "composer_worker_kms" {
   project = "db-cicdpipeline-wave3"
   role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
   member  = "serviceAccount:${google_service_account.composer_env_sa.email}"
