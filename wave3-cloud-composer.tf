@@ -112,7 +112,7 @@ resource "google_service_account_iam_member" "custom_service_account_kms" {
   provider           = google-beta
   service_account_id = google_service_account.composer_env_sa.id
   role    			 = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-  member             = "service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com"
+  member             = "serviceAccount:service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com"
   }
 resource "google_service_account_iam_member" "custom_service_account" {
   provider           = google-beta
