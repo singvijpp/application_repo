@@ -66,7 +66,7 @@ resource "google_composer_environment" "new_composer_env" {
 		service_account = google_service_account.composer_env_sa.email
     }
 	encryption_config {
-			kms_key_name = "projects/db-cicdpipeline-wave3/locations/asia-south2/service_account/$secrets.garage_service_account/keyRings/Key-ring/cryptoKeys/crypto-key"
+			kms_key_name = "projects/db-cicdpipeline-wave3/locations/asia-south2/keyRings/Key-ring/cryptoKeys/crypto-key"
 			
     }
 	recovery_config	{
@@ -107,7 +107,11 @@ resource "google_project_iam_member" "composer_worker" {
   role    = "roles/composer.worker"
   member  = "serviceAccount:${google_service_account.composer_env_sa.email}"
 }
-
+resource "google_project_iam_member" "composer_worker" {
+  project = "db-cicdpipeline-wave3"
+  role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+  member  = "serviceAccount:${google_service_account.composer_env_sa.email}"
+}
 resource "google_service_account_iam_member" "custom_service_account" {
   provider           = google-beta
   service_account_id = google_service_account.composer_env_sa.id
