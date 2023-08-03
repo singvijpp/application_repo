@@ -78,9 +78,6 @@ resource "google_composer_environment" "new_composer_env" {
 
 	encryption_config {
 			kms_key_name = "Keyring_east1"
-			content {
-			kms_key_name = encryption_config.value["kms_key_name"]
-      }
     }
   }
 }
