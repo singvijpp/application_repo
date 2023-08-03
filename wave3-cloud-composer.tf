@@ -65,7 +65,10 @@ resource "google_composer_environment" "new_composer_env" {
 		subnetwork      = "asia-south-1"
 		service_account = google_service_account.composer_env_sa.email
     }
-	
+	encryption_config {
+			project = projects/"db-cicdpipeline-wave3"/locations/"global"/keyRings/"Key-ring"/cryptoKeys/"crypto-key"
+				
+    }
 	recovery_config	{
 		scheduled_snapshots_config {
 			enabled = true 
@@ -76,9 +79,6 @@ resource "google_composer_environment" "new_composer_env" {
 		}
 	}
 
-	encryption_config {
-			kms_key_name = "Keyring_east1"
-    }
   }
 }
 
