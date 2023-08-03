@@ -1,7 +1,5 @@
 """ Two Airflow DAGs that demonstrate the mechanism of triggering DAGs
     with Pub/Sub messages
-
-    Usage: Replace <PROJECT_ID> with the project ID of your project
 """
 
 from __future__ import annotations
@@ -18,7 +16,7 @@ from airflow.providers.google.cloud.operators.pubsub import (
     PubSubPullOperator,
 )
 
-PROJECT_ID = "<PROJECT_ID>"
+PROJECT_ID = "db-cicdpipeline-wave3"
 TOPIC_ID = "dag-topic-trigger"
 SUBSCRIPTION = "trigger_dag_subscription"
 

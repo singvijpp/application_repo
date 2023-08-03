@@ -1,9 +1,5 @@
 #   Usage:
-#       1. Select or create a new project that you will use to create the resources
-#       2. Set up your environment and apply the configuration using basic Terraform commands: https://cloud.google.com/docs/terraform/basic-commands
-#
 #   The script provisions the following resources in the project:
-#  	- Creates a VPC network and a subnetwork
 #	- Creates a Cloud Composer environment
 #	- Creates a Composer Service Agent account
 #	- Grants the Cloud Composer v2 API Service Agent Extension role and the Composer Worker role to the Composer Service Agent account
@@ -70,6 +66,22 @@ resource "google_composer_environment" "new_composer_env" {
 		service_account = google_service_account.composer_env_sa.email
     }
 	
+	recovery_config	{
+		scheduled_snapshots_config {
+			enabled = TRUE 
+			snapshot_location = 
+			snapshot_creation_schedule = "0 0 * * *"
+			time_zone =                  "UTC+01"
+
+		}
+	}
+
+	dynamic "encryption_config" {
+			kms_key_name = "Keyring_east1"
+			content {
+			kms_key_name = encryption_config.value["kms_key_name"]
+      }
+    }
   }
 }
 
@@ -105,78 +117,3 @@ resource "google_service_account_iam_member" "custom_service_account" {
   role               = "roles/composer.ServiceAgentV2Ext"
   member             = "serviceAccount:${google_project_service_identity.composer_sa.email}"
 }
-
-
-#########################
-#                       #
-# Enable Cloud F api 	#
-#                       #
-#########################
-
-resource "google_project_service" "cloud_function" {
-  project = "db-cicdpipeline-wave3"
-  service = "cloudfunctions.googleapis.com"
-
-  timeouts {
-    create = "30m"
-    update = "40m"
-  }
-
-  disable_dependent_services = true
-  disable_on_destroy         = false
-}
-
-########################
-#                      #
-# Creates PubSub topic #
-#                      #
-########################
-resource "google_pubsub_topic" "trigger" {
-  project                    = "db-cicdpipeline-wave3"
-  name                       = "dag-topic-trigger"
-  message_retention_duration = "86600s"
-}
-
-##########################
-#                        #
-# Creates Cloud Function #
-#                        #
-##########################
-
-resource "google_storage_bucket_object" "cloud_function_source" {
-  name   = "pubsub-function-zip-file"
-  bucket = "db-cicd-wave3"
-  # Uncomment to upload a zip containing the cloudfunction source code in zip format
-  #source = "/path/to/cloudfunction/source.zip"
-  content = "Data as string to be uploaded"
-}
-
-resource "google_cloudfunctions_function" "pubsub_function" {
-  project = "db-cicdpipeline-wave3"
-  name    = "pubsub-publisher"
-  runtime = "python310"
-  region  = "asia-south2"
-
-  available_memory_mb   = 128
-  source_archive_bucket = "db-cicd-wave3"
-  source_archive_object = google_storage_bucket_object.cloud_function_source.output_name
-  timeout               = 60
-  entry_point           = "pubsub_publisher"
-  service_account_email = "cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com"
-  trigger_http          = true
-
-}
-
-
-###################
-#                 #
-# Upload Dag file #
-#                 #
-###################
-
-resource "google_storage_bucket_object" "composer_dags_source" {
-  name   = "dags/dag-pubsub-sensor-py-file"
-  bucket = trimprefix(trimsuffix(google_composer_environment.new_composer_env.config[0].dag_gcs_prefix, "/dags"), "gs://")
-  source = "./pubsub_trigger_response_dag.py"
-}
-# [END triggering_dags_with_functions_and_pubsub]
