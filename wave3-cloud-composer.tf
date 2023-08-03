@@ -12,7 +12,7 @@
 resource "google_project_iam_member" "composer_worker_kms" {
   project = "db-cicdpipeline-wave3"
   role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-  member  = "serviceAccount:service-db-cicdpipeline-wave3@compute-system.iam.gserviceaccount.com"
+  member  = "serviceAccount:service-36949417800@compute-system.iam.gserviceaccount.com"
 }
 
 resource "google_project_service" "composer" {
