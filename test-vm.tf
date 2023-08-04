@@ -1,4 +1,4 @@
- resource "google_compute_instance" "vm_instance" {
+/* resource "google_compute_instance" "vm_instance" {
     name         = "test-linux-vm"
     machine_type = "f1-micro"
     tags = ["sonarqube"]
@@ -13,4 +13,4 @@
       subnetwork = "asia-south-1"
     access_config {}
   }
-  }
+  }*/
