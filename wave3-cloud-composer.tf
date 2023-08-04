@@ -111,12 +111,12 @@ resource "google_project_iam_member" "composer_worker" {
 resource "google_project_iam_member" "act_as" {
   project  = "db-cicdpipeline-wave3"
   role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-  member  = "serviceAccount:${google_project_service_identity.composer_sa.email}"
+  member  = "serviceAccount:${google_service_account.composer_env_sa.email}"
 }
 
 resource "google_service_account_iam_member" "custom_service_account" {
   provider           = google-beta
   service_account_id = google_service_account.composer_env_sa.id
   role               = "roles/composer.ServiceAgentV2Ext"
-  member             = "serviceAccount:${google_project_service_identity.composer_sa.email}"
+  member             = "serviceAccount:${google_service_account.composer_env_sa.email}"
 }
