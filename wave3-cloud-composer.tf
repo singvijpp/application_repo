@@ -133,3 +133,9 @@ resource "google_project_iam_member" "kmsagent_service_account" {
   role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
   member  = "serviceAccount:service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com"
 }
+
+resource "google_project_iam_member" "kmsgke_service_account" {
+  project = "db-cicdpipeline-wave3"
+  role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+  member  = "serviceAccount:service-36949417800@container-engine-robot.iam.gserviceaccount.com"
+}
