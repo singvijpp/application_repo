@@ -10,7 +10,7 @@ disabled        = false
   target_tags = ["gcpwave3-linux-vm"]
 }*/
  resource "google_compute_instance" "vm_instance" {
-    name         = "sonarqube-linux-vm"
+    name         = "test-linux-vm"
     machine_type = "f1-micro"
     tags = ["sonarqube"]
   
