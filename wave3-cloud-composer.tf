@@ -126,3 +126,9 @@ resource "google_project_iam_member" "agent_service_account" {
   role    = "roles/composer.ServiceAgentV2Ext"
   member  = "serviceAccount:service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com"
   }
+  
+  resource "google_project_iam_member" "act_as_agent" {
+  project  = "db-cicdpipeline-wave3"
+  role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+  member  = "serviceAccount:service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com}"
+}
