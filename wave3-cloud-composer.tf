@@ -120,3 +120,8 @@ resource "google_service_account_iam_member" "custom_service_account" {
   role               = "roles/composer.ServiceAgentV2Ext"
   member             = "serviceAccount:${google_service_account.composer_env_sa.email}"
 }
+resource "google_service_account_iam_member" "agent_service_account" {
+  provider           = google-beta
+  role               = "roles/composer.ServiceAgentV2Ext"
+  member             = "serviceAccount:service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com"
+  }
