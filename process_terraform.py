@@ -7,7 +7,7 @@ def process_file(file_path):
     with open(file_path, 'r') as f:
         content = f.read()
         response = openai.Completion.create(
-            engine="gpt-4.0-turbo", 
+            engine="gpt-3.5-turbo", 
             prompt=f"Generate documentation for this Terraform code: {content}",  
             max_tokens=500
         )
