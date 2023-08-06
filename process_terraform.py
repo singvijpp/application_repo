@@ -2,7 +2,7 @@ import openai
 import os
 import glob
 
-openai.api_key = "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"  # Assuming it's set as an environment variable
+openai.api_key = "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"  # Assuming it's set as an environment variable
 
 def process_file(file_path):
     with open(file_path, 'r') as f:
