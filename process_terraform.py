@@ -11,8 +11,7 @@ def process_file(file_path):
             messages=[
                 {"role": "system", "content": "You are a helpful assistant."},
                 {"role": "user", "content": content}
-            ],
-            max_tokens=500
+            ]
         )
         print(f"Documentation for {file_path}:")
         print(response.choices[0].text.strip())
