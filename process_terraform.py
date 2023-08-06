@@ -1,6 +1,7 @@
 import openai
 import os
 import glob
+import requests
 
 openai.api_key = os.environ['OPENAI_API_KEY']  # Assuming it's set as an environment variable
 url = "https://openai.com/v1/"
