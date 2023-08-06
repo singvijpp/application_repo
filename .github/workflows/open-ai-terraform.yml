@@ -19,5 +19,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install openai
-    - name: Process Terraform Scripts
+    - name: Use OpenAI API
       run: python ./process_terraform.py
+      env: 
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
