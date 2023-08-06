@@ -8,8 +8,8 @@ def process_file(file_path):
         content = f.read()
         response = openai.Completion.create(
             engine="gpt-3.5-turbo", 
-            messages=[ {"role": "system", "content": {content}},
-                       {"role": "user", "content": "Translate the following English text to French: 'Hello, how are you?'"},
+            messages=[ {"role": "system", "content": content},
+                       {"role": "user", "content": "Translate the following English text to French: 'Hello, how are you?'"}
                      ]
             max_tokens=500
         )
