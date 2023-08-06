@@ -10,7 +10,7 @@ def process_file(file_path):
             engine="gpt-4",
             messages=[
                 {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": content}
+                {"role": "user", "content": "who is best cricket batsman in world cricket"}
             ],
             max_tokens = 150,
             n = 1,
