@@ -6,7 +6,7 @@ import requests
 openai.api_key = os.environ['OPENAI_API_KEY']  # Assuming it's set as an environment variable
 url = "https://openai.com/v1/"
 print("Requesting URL:", url)
-response = requests.get(url, headers={...})
+response = requests.get(url, headers={"/v1/engines/gpt-4-0314/chat/completions"})
 
 def process_file(file_path):
     with open(file_path, 'r') as f:
