@@ -7,7 +7,7 @@ def process_file(file_path):
     with open(file_path, 'r') as f:
         content = f.read()
         response = openai.ChatCompletion.create(
-            engine="gpt-3.5-turbo-0301",
+            engine="gpt-4-0314",
             messages=[
                 {"role": "system", "content": "You are a helpful assistant."},
                 {"role": "user", "content": "who is best cricket batsman in world cricket"}
