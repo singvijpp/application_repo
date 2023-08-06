@@ -8,7 +8,9 @@ def process_file(file_path):
         content = f.read()
         response = openai.Completion.create(
             engine="gpt-3.5-turbo", 
-            prompt=f"Generate documentation for this Terraform code: {content}",  
+            prompt=f"Generate documentation for this Terraform code: ", 
+            messages=[ {"role": "system", "content": {content}}
+                    ]
             max_tokens=500
         )
         print(f"Documentation for {file_path}:")
