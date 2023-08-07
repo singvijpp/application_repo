@@ -113,6 +113,7 @@ variable "service_accounts" {
 				 "36949417800-compute@developer.gserviceaccount.com",
 				 "cicd-wave3-composer-sa@db-cicdpipeline-wave3.iam.gserviceaccount.com",
 				 "service-36949417800@gcp-sa-pubsub.iam.gserviceaccount.com",
+				 "service-36949417800@gcp-sa-composer.iam.gserviceaccount.com",
 				 "service-36949417800@gcp-sa-artifactregistry.iam.gserviceaccount.com"]
   
 }
