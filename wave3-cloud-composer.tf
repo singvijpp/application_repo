@@ -108,11 +108,23 @@ resource "google_project_iam_member" "composer_worker" {
   member  = "serviceAccount:${google_service_account.composer_env_sa.email}"
 }  
 
-resource "google_project_iam_member" "act_as" {
-  project  = "db-cicdpipeline-wave3"
-  role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-  member  = "serviceAccount:${google_service_account.composer_env_sa.email}"
+variable "service_accounts" {
+  description = "List of service accounts"
+  type        = list(string)
+  default     = ["serviceAccount:${google_service_account.composer_env_sa.email}",
+                 "serviceAccount:service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com",
+                 "serviceAccount:service-36949417800@container-engine-robot.iam.gserviceaccount.com",
+				 "serviceAccount:service-36949417800@compute-system.iam.gserviceaccount.com"]
 }
+
+resource "google_project_iam_member" "kms_roles" {
+  for_each = toset(var.service_accounts)
+
+  project = "db-cicdpipeline-wave3"
+  role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+  member  = "serviceAccount:${each.value}"
+}
+
 
 resource "google_service_account_iam_member" "custom_service_account" {
   provider           = google-beta
@@ -126,16 +138,3 @@ resource "google_project_iam_member" "agent_service_account" {
   role    = "roles/composer.ServiceAgentV2Ext"
   member  = "serviceAccount:service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com"
   }
-  
-
-resource "google_project_iam_member" "kmsagent_service_account" {
-  project = "db-cicdpipeline-wave3"
-  role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-  member  = "serviceAccount:service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com"
-}
-
-resource "google_project_iam_member" "kmsgke_service_account" {
-  project = "db-cicdpipeline-wave3"
-  role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-  member  = "serviceAccount:service-36949417800@container-engine-robot.iam.gserviceaccount.com"
-}
