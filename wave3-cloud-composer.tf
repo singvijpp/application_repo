@@ -108,7 +108,10 @@ variable "service_accounts" {
   default     = [ "service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com",
                  "service-36949417800@container-engine-robot.iam.gserviceaccount.com",
 				 "service-36949417800@compute-system.iam.gserviceaccount.com",
-				 "cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com"]
+				 "cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com",
+				 "36949417800@cloudservices.gserviceaccount.com",
+				 "36949417800-compute@developer.gserviceaccount.com",
+				 "cicd-wave3-composer-sa@db-cicdpipeline-wave3.iam.gserviceaccount.com"]
   
 }
 
