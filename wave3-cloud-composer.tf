@@ -72,6 +72,7 @@ resource "google_composer_environment" "new_composer_env" {
 	recovery_config	{
 		scheduled_snapshots_config {
 			enabled = true 
+			snapshot_location = "gs://db-cicd-wave3/environment_snapshots2"
 			snapshot_creation_schedule = "0 0 * * *"
 			time_zone =                  "UTC+01"
 
@@ -110,13 +111,14 @@ variable "service_accounts" {
 				 "cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com",
 				 "36949417800@cloudservices.gserviceaccount.com",
 				 "36949417800-compute@developer.gserviceaccount.com",
-				 "cicd-wave3-composer-sa@db-cicdpipeline-wave3.iam.gserviceaccount.com"]
+				 "cicd-wave3-composer-sa@db-cicdpipeline-wave3.iam.gserviceaccount.com",
+				 "service-36949417800@gcp-sa-pubsub.iam.gserviceaccount.com",
+				 "service-36949417800@gcp-sa-artifactregistry.iam.gserviceaccount.com"]
   
 }
 
 resource "google_project_iam_member" "kms_roles" {
   for_each = toset(var.service_accounts)
-
   project = "db-cicdpipeline-wave3"
   role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
   member  = "serviceAccount:${each.value}"
@@ -125,7 +127,6 @@ resource "google_project_iam_member" "kms_roles" {
 
 resource "google_project_iam_member" "composer_ext_roles" {
   for_each = toset(var.service_accounts)
-
   project = "db-cicdpipeline-wave3"
   role    = "roles/composer.ServiceAgentV2Ext"
   member  = "serviceAccount:${each.value}"
@@ -133,7 +134,6 @@ resource "google_project_iam_member" "composer_ext_roles" {
 
 resource "google_project_iam_member" "composer_worker_roles" {
   for_each = toset(var.service_accounts)
-
   project = "db-cicdpipeline-wave3"
   role    = "roles/composer.worker"
   member  = "serviceAccount:${each.value}"
