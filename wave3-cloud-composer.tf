@@ -107,7 +107,8 @@ variable "service_accounts" {
   type        = list(string)
   default     = [ "service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com",
                  "service-36949417800@container-engine-robot.iam.gserviceaccount.com",
-				 "service-36949417800@compute-system.iam.gserviceaccount.com"]
+				 "service-36949417800@compute-system.iam.gserviceaccount.com",
+				 "cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com"]
   
 }
 
