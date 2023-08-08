@@ -113,7 +113,6 @@ variable "service_accounts" {
 				 "36949417800-compute@developer.gserviceaccount.com",
 				 "cicd-wave3-composer-sa@db-cicdpipeline-wave3.iam.gserviceaccount.com",
 				 "service-36949417800@gcp-sa-pubsub.iam.gserviceaccount.com",
-				 "service-36949417800@gcp-sa-composer.iam.gserviceaccount.com",
 				 "service-36949417800@gcp-sa-artifactregistry.iam.gserviceaccount.com"]
   
 }
@@ -144,6 +143,13 @@ resource "google_project_iam_member" "composer_user_roles" {
   for_each = toset(var.service_accounts)
   project = "db-cicdpipeline-wave3"
   role    = "roles/composer.user"
+  member  = "serviceAccount:${each.value}"
+}
+
+resource "google_project_iam_member" "composer_sql_roles" {
+  for_each = toset(var.service_accounts)
+  project = "db-cicdpipeline-wave3"
+  role    = "roles/cloudsql.admin"
   member  = "serviceAccount:${each.value}"
 }
 
