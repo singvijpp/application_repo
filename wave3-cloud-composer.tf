@@ -102,6 +102,17 @@ resource "google_project_service_identity" "composer_sa" {
   service  = "composer.googleapis.com"
 }  
 
+resource "google_kms_crypto_key_iam_binding" "composer_encrypter_decrypter" {
+  crypto_key_id = "projects/db-cicdpipeline-wave3/locations/asia-south2/keyRings/kms_key_ring_new/cryptoKeys/crypto-key-new"
+
+  role = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+
+  members = [
+    "serviceAccount:service-36949417800@gcp-sa-composer.iam.gserviceaccount.com",
+	"serviceAccount:${google_service_account.composer_env_sa.email}",
+  ]
+}
+
 variable "service_accounts" {
   description = "List of service accounts"
   type        = list(string)
