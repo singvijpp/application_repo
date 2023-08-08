@@ -108,7 +108,7 @@ resource "google_kms_crypto_key_iam_binding" "composer_encrypter_decrypter" {
   role = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
 
   members = [
-    "serviceAccount:service-36949417800@gcp-sa-composer.iam.gserviceaccount.com",
+    "serviceAccount:service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com",
 	"serviceAccount:${google_service_account.composer_env_sa.email}",
   ]
 }
