@@ -36,33 +36,12 @@ resource "google_composer_environment" "new_composer_env" {
     software_config {
       image_version = "composer-2-airflow-2"
     }
-    workloads_config {
-      scheduler {
-        cpu        = 0.5
-        memory_gb  = 1.875
-        storage_gb = 1
-        count      = 1
-      }
-      web_server {
-        cpu        = 0.5
-        memory_gb  = 1.875
-        storage_gb = 1
-      }
-      worker {
-        cpu        = 0.5
-        memory_gb  = 1.875
-        storage_gb = 1
-        min_count  = 1
-        max_count  = 3
-      }
-
-
-    }
+	node_count = 4
     environment_size = "ENVIRONMENT_SIZE_SMALL"
 
 	  node_config {
-		network         = "wave-3"
-		subnetwork      = "asia-south-1"
+		network         = "projects/db-cicdpipeline-wave3/regions/asia-south2/network/wave-3"
+		subnetwork      = "projects/db-cicdpipeline-wave3/regions/asia-south2/subnetworks/asia-south-1"
 		service_account = "cicd-wave3-composer-sa@db-cicdpipeline-wave3.iam.gserviceaccount.com"
     }
 	encryption_config {
