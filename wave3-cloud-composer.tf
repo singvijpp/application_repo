@@ -63,7 +63,7 @@ resource "google_composer_environment" "new_composer_env" {
 	  node_config {
 		network         = "wave-3"
 		subnetwork      = "asia-south-1"
-		service_account = "serviceAccount:${google_service_account.composer_env_sa.email}"
+		service_account = "cicd-wave3-composer-sa@db-cicdpipeline-wave3.iam.gserviceaccount.com"
     }
 	encryption_config {
 			kms_key_name = "projects/db-cicdpipeline-wave3/locations/asia-south2/keyRings/kms_key_ring_new/cryptoKeys/crypto-key-new"
