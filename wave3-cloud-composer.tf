@@ -63,8 +63,7 @@ resource "google_composer_environment" "new_composer_env" {
 	  node_config {
 		network         = "projects/db-cicdpipeline-wave3/regions/asia-south2/network/wave-3"
 		subnetwork      = "projects/db-cicdpipeline-wave3/regions/asia-south2/subnetworks/asia-south-1"
-		service_account = "cicd-wave3-composer-sa@db-cicdpipeline-wave3.iam.gserviceaccount.com"
-    }
+		    }
 	encryption_config {
 			kms_key_name = "projects/db-cicdpipeline-wave3/locations/asia-south2/keyRings/kms_key_ring_new/cryptoKeys/crypto-key-new"
 			
@@ -118,7 +117,6 @@ variable "service_accounts" {
   default     = [ "service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com",
                  "service-36949417800@container-engine-robot.iam.gserviceaccount.com",
 				 "service-36949417800@compute-system.iam.gserviceaccount.com",
-				 "cicd-wave3-serviceaccot@db-cicdpipeline-wave3.iam.gserviceaccount.com",
 				 "36949417800@cloudservices.gserviceaccount.com",
 				 "36949417800-compute@developer.gserviceaccount.com",
 				 "cicd-wave3-composer-sa@db-cicdpipeline-wave3.iam.gserviceaccount.com",
@@ -131,14 +129,6 @@ resource "google_project_iam_member" "kms_roles" {
   for_each = toset(var.service_accounts)
   project = "db-cicdpipeline-wave3"
   role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-  member  = "serviceAccount:${each.value}"
-}
-
-
-resource "google_project_iam_member" "composer_ext_roles" {
-  for_each = toset(var.service_accounts)
-  project = "db-cicdpipeline-wave3"
-  role    = "roles/composer.ServiceAgentV2Ext"
   member  = "serviceAccount:${each.value}"
 }
 
@@ -155,14 +145,6 @@ resource "google_project_iam_member" "composer_user_roles" {
   role    = "roles/composer.user"
   member  = "serviceAccount:${each.value}"
 }
-
-resource "google_project_iam_member" "composer_sql_roles" {
-  for_each = toset(var.service_accounts)
-  project = "db-cicdpipeline-wave3"
-  role    = "roles/cloudsql.admin"
-  member  = "serviceAccount:${each.value}"
-}
-
 
 resource "google_project_iam_member" "act_as" {
   project  = "db-cicdpipeline-wave3"
