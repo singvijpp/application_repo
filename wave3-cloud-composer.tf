@@ -170,3 +170,9 @@ resource "google_project_iam_member" "composer_sql" {
   role    = "roles/cloudsql.admin"
   member  = "serviceAccount:${google_service_account.composer_env_sa.email}"
 }
+resource "google_service_account_iam_member" "iam_composer_kms" {
+  provider           = google-beta
+  service_account_id = google_service_account.composer_env_sa.id
+  role               = "roles/composer.ServiceAgentV2Ext"
+  member             = "serviceAccount:service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com}"
+}
