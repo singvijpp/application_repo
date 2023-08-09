@@ -36,7 +36,6 @@ resource "google_composer_environment" "new_composer_env" {
     software_config {
       image_version = "composer-2-airflow-2"
     }
-	node_count = 4
     environment_size = "ENVIRONMENT_SIZE_SMALL"
 
 	  node_config {
