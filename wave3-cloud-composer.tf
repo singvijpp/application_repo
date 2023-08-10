@@ -122,7 +122,9 @@ variable "service_accounts" {
 				 "36949417800-compute@developer.gserviceaccount.com",
 				 "cicd-wave3-composer-sa@db-cicdpipeline-wave3.iam.gserviceaccount.com",
 				 "service-36949417800@gcp-sa-pubsub.iam.gserviceaccount.com",
-				 "service-36949417800@gcp-sa-artifactregistry.iam.gserviceaccount.com"]
+				 "service-36949417800@gcp-sa-artifactregistry.iam.gserviceaccount.com",
+				 "service-36949417800@gs-project-accounts.iam.gserviceaccount.com",
+				 ]
   
 }
 
@@ -133,6 +135,13 @@ resource "google_project_iam_member" "kms_roles" {
   member  = "serviceAccount:${each.value}"
 }
 
+
+resource "google_project_iam_member" "kms_v2ext_roles" {
+  for_each = toset(var.service_accounts)
+  project = "db-cicdpipeline-wave3"
+  role    = "roles/composer.ServiceAgentV2Ext"
+  member  = "serviceAccount:${each.value}"
+}
 resource "google_project_iam_member" "composer_worker_roles" {
   for_each = toset(var.service_accounts)
   project = "db-cicdpipeline-wave3"
