@@ -118,7 +118,6 @@ resource "google_kms_crypto_key_iam_binding" "composer_extension_role" {
   role = "roles/composer.ServiceAgentV2Ext"
 
   members = serviceAccount:service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com"
-  ]
 }
 
 
