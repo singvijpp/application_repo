@@ -64,6 +64,10 @@ resource "google_composer_environment" "new_composer_env" {
 		network         = "projects/db-cicdpipeline-wave3/regions/asia-south2/network/wave-3"
 		subnetwork      = "projects/db-cicdpipeline-wave3/regions/asia-south2/subnetworks/asia-south-1"
 		    }
+	encryption_config {
+			kms_key_name = "projects/db-cicdpipeline-wave3/locations/asia-south2/keyRings/kms_key_ring_new/cryptoKeys/crypto-key-new"
+			
+    }
 	recovery_config	{
 		scheduled_snapshots_config {
 			enabled = true 
