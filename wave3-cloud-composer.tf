@@ -178,5 +178,5 @@ resource "google_project_iam_member" "composer_worker" {
 resource "google_project_iam_member" "composer_sql" {
   project = "db-cicdpipeline-wave3"
   role    = "roles/cloudsql.admin"
-  member  = "serviceAccount:${google_service_account.composer_env_sa.email}"
+  member  = "serviceAccount:${google_service_account.composer_env_sa.email"
 }
