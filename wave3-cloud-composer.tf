@@ -111,6 +111,19 @@ resource "google_kms_crypto_key_iam_binding" "composer_encrypter_decrypter" {
   ]
 }
 
+
+resource "google_kms_crypto_key_iam_binding" "composer_extension_role" {
+  crypto_key_id = "projects/db-cicdpipeline-wave3/locations/asia-south2/keyRings/kms_key_ring_new/cryptoKeys/crypto-key-new"
+
+  role = "roles/composer.ServiceAgentV2Ext"
+
+  members = [
+    "serviceAccount:service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com",
+	"serviceAccount:${google_service_account.composer_env_sa.email}",
+  ]
+}
+
+
 variable "service_accounts" {
   description = "List of service accounts"
   type        = list(string)
@@ -169,10 +182,4 @@ resource "google_project_iam_member" "composer_sql" {
   project = "db-cicdpipeline-wave3"
   role    = "roles/cloudsql.admin"
   member  = "serviceAccount:${google_service_account.composer_env_sa.email}"
-}
-resource "google_service_account_iam_member" "iam_composer_kms" {
-  provider           = google-beta
-  service_account_id = google_service_account.composer_env_sa.id
-  role               = "roles/composer.ServiceAgentV2Ext"
-  member             = "serviceAccount:service-36949417800@cloudcomposer-accounts.iam.gserviceaccount.com"
 }
