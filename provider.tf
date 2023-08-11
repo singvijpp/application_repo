@@ -10,7 +10,7 @@ provider "google-beta" {
 
 terraform {
   backend "gcs" {
-    bucket = "cicd-action"
+    bucket = "db-cicd-wave3"
     prefix = "terraform/state"
   }
 }
