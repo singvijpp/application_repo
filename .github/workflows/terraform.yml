@@ -28,7 +28,4 @@ jobs:
           terraform init
       - name: Run terraform plan -destroy
         run: |
-          terraform plan 
-      - name: Run terraform apply
-        run: |
-          terraform apply -auto-approve
+          terraform plan
