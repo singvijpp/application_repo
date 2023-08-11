@@ -38,4 +38,4 @@ jobs:
       - name: Run terraform apply
         
         run: |
-          terraform apply -auto-approve
+          terraform apply -auto-approve -lock=false
