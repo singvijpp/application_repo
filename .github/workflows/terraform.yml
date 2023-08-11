@@ -26,6 +26,6 @@ jobs:
       - name: Run terraform init -migrate-state
         run: |
           terraform init -migrate-state
-      - name: Run terraform plan -destroy
+      - name: Run terraform plan
         run: |
           terraform plan
