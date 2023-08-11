@@ -30,8 +30,12 @@ jobs:
       
       - name: Run terraform init
         run: |
-          terraform init -reconfigure
+          terraform init
       - name: Run terraform plan -destroy
         if: github.ref == 'refs/heads/main'
         run: |
-          terraform plan -lock=false
+          terraform plan
+      - name: Run terraform apply
+        
+        run: |
+          terraform apply -auto-approve
