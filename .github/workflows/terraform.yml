@@ -23,9 +23,9 @@ jobs:
           token_format: 'access_token'
           workload_identity_provider: ${{ secrets.GIT_HUB__CICD_PROVIDE }}
           service_account: ${{ secrets.garage_service_account }}
-      - name: Run terraform init
+      - name: Run terraform init -migrate-state
         run: |
-          terraform init
+          terraform init -migrate-state
       - name: Run terraform plan -destroy
         run: |
           terraform plan
