@@ -10,5 +10,5 @@ variable "region" {
 
 variable "backend_bucket" {
   type = string
-  default = "cicd-action"
+  default = "db-cicd-wave3"
   }
