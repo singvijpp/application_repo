@@ -14,7 +14,7 @@ dag = DAG(
     'hello_world_dag',
     default_args=default_args,
     description='A simple hello world DAG',
-    schedule_interval='@daily',
+    schedule_interval='*/10 * * * *',
     catchup=False,
 )
 
