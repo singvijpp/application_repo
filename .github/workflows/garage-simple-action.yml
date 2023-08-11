@@ -34,7 +34,7 @@ jobs:
       - name: Run terraform plan -destroy
         if: github.ref == 'refs/heads/main'
         run: |
-          terraform plan
+          terraform plan -lock=false
       - name: Run terraform apply
         
         run: |
