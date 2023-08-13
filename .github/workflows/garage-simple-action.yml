@@ -32,8 +32,9 @@ jobs:
       
       - name: Run terraform init
         run: |
+            export TF_LOG=DEBUG
             expect <<- DONE
-            spawn TF_LOG=DEBUG terraform init -migrate-state -lock=false
+            spawn terraform init -migrate-state -lock=false
             expect "Enter a value:"
             send "yes\r"
             expect eof
