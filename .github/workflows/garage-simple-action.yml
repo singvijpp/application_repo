@@ -30,6 +30,7 @@ jobs:
       
       - name: Run terraform init
         run: |
+          terraform force-unlock 1691765624841014
           terraform init -migrate-state
       - name: Run terraform plan -destroy
         if: github.ref == 'refs/heads/main'
