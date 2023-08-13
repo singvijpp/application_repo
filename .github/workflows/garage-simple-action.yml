@@ -31,7 +31,6 @@ jobs:
        - name: Run terraform init
         run: |
             terraform init
-            terraform state push ./deafult_tfstate.tfstate
       - name: Run terraform plan -destroy
         if: github.ref == 'refs/heads/main'
         run: |
@@ -40,6 +39,3 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: |
           terraform apply -auto-approve
-
-
-
