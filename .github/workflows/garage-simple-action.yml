@@ -39,6 +39,14 @@ jobs:
             send "yes\r"
             expect eof
             DONE
+      - name: List directory contents
+        run: |
+            pwd
+            ls -lart
+      
+      - name: Re-init before plan
+        run: |
+            terraform init
       - name: Run terraform plan -destroy
         if: github.ref == 'refs/heads/main'
         run: |
