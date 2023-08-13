@@ -13,7 +13,7 @@ resource "google_bigquery_dataset" "terraform_state_dataset" {
 
   access {
     role          = "READER"
-    group_by_email = "vijay.psingh2@tcs.com"
+    group_by_email = "user:vijay.psingh2@tcs.com"
   }
 }
 
