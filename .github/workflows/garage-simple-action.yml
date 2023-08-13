@@ -32,8 +32,8 @@ jobs:
       
       - name: Run terraform init
         run: |
-            terraform state push ./deafult_tfstate.tfstate
             terraform init
+            terraform state push ./deafult_tfstate.tfstate
       - name: Run terraform plan -destroy
         if: github.ref == 'refs/heads/main'
         run: |
