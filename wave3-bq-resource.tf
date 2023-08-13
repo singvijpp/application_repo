@@ -8,7 +8,7 @@ resource "google_bigquery_dataset" "terraform_state_dataset" {
 
   access {
     role          = "OWNER"
-    user_by_email = "serviceAccount:${google_service_account.composer_env_sa.email}"
+    user_by_email = google_service_account.composer_env_sa.email
   }
 
   access {
