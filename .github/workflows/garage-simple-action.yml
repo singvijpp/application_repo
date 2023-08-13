@@ -32,8 +32,10 @@ jobs:
       
       - name: Run terraform init
         run: |
-            terraform init
-      - name: Run terraform plan -destroy
-        if: github.ref == 'refs/heads/main'
-        run: |
-          terraform plan
+            export TF_LOG=DEBUG
+            expect <<- DONE
+            spawn terraform init -migrate-state -lock=false
+            expect "Enter a value:"
+            send "yes\r"
+            expect eof
+            DONE
