@@ -32,22 +32,8 @@ jobs:
       
       - name: Run terraform init
         run: |
-            export TF_LOG=DEBUG
-            expect <<- DONE
-            spawn terraform init -reconfigure
-            expect "Enter a value:"
-            send "yes\r"
-            expect eof
-            DONE
-      - name: List directory contents
-        run: |
-            pwd
-            ls -lart
-      
-      - name: Re-init before plan
-        run: |
-            terraform init
+            terraform init -reconfigure
       - name: Run terraform plan -destroy
         if: github.ref == 'refs/heads/main'
         run: |
-          terraform plan -lock=false
+          terraform plan
