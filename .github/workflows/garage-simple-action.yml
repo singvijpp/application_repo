@@ -39,7 +39,3 @@ jobs:
             send "yes\r"
             expect eof
             DONE
-      - name: Run terraform plan -destroy
-        if: github.ref == 'refs/heads/main'
-        run: |
-          terraform plan
