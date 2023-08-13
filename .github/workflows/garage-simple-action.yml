@@ -11,30 +11,27 @@ jobs:
     permissions: 
       contents: read
       id-token: write
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - id: 'auth'
+  steps:
+    - name: Checkout
+        uses: 'actions/checkout@v2'
+    - id: 'auth'
         name: 'Authenticate to Google Cloud'
         uses: 'google-github-actions/auth@v1'
         with:
-          token_format: 'access_token'
-          workload_identity_provider: ${{ secrets.GIT_HUB__CICD_PROVIDE }}
-          service_account: ${{ secrets.garage_service_account }}
-      - name: 'Set up Cloud SDK'
+            token_format: 'access_token'
+            workload_identity_provider: ${{ secrets.GIT_HUB__CICD_PROVIDE }}
+            service_account: ${{ secrets.garage_service_account }}
+    - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v1'
-      - name: Install expect
-        run: sudo apt-get install -y expect
-      - name: Set up Terraform
+    - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
-        with:
-          terraform_version: 1.5.2
+            with:
+            terraform_version: 1.5.2
       
-      - name: Run terraform init
+    - name: Run terraform init
         run: |
             terraform init
-      - name: Run terraform plan -destroy
+    - name: Run terraform plan -destroy
         if: github.ref == 'refs/heads/main'
         run: |
-          terraform plan
-      
+            terraform plan
