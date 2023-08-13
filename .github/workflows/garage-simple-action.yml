@@ -30,7 +30,8 @@ jobs:
       
       - name: Run terraform init
         run: |
-          echo 'yes'|TF_LOG=DEBUG terraform init -migrate-state -lock=false
+          TF_LOG=DEBUG terraform init -migrate-state -lock=false
+          echo 'yes'
       - name: Run terraform plan -destroy
         if: github.ref == 'refs/heads/main'
         run: |
