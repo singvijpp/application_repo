@@ -15,7 +15,7 @@ default_args = {
 }
 
 def fetch_tf_state_from_gcs(**kwargs):
-    bucket_name = google_storage_bucket.bucket.name
+    bucket_name = "terraform_bucket_cicd_2"
     blob_name = 'terraform/state/default.tfstate'
     
     client = storage.Client()
