@@ -52,8 +52,3 @@ resource "google_bigquery_dataset_iam_member" "dataset_view_comoser_member" {
   role       = "roles/bigquery.dataViewer"
   member     = "serviceAccount:${google_service_account.composer_env_sa.email}"
 }
-resource "google_bigquery_dataset_iam_member" "dataset_user_comoser_member" {
-  dataset_id = google_bigquery_dataset.terraform_state_dataset.dataset_id
-  role       = "roles/bigquery.jobUser"
-  member     = "serviceAccount:${google_service_account.composer_env_sa.email}"
-}
