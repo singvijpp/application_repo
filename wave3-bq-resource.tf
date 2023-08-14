@@ -35,3 +35,9 @@ resource "google_bigquery_table" "terraform_state_table" {
 ]
 EOF
 }
+
+resource "google_bigquery_dataset_iam_member" "dataset_iam_member" {
+  dataset_id = google_bigquery_dataset.terraform_state_dataset.dataset_id
+  role       = "roles/bigquery.dataViewer"
+  member     = "user:vijay.psingh2@tcs.com"
+}
