@@ -11,7 +11,7 @@ variable "bucket_names" {
 
 resource "google_storage_bucket" "managed_buckets" {
   for_each = toset(var.bucket_names)
-
+  location = "asia-south2"
   name          = each.value
   force_destroy = true  # Delete even if bucket has content
 }
