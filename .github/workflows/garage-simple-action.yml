@@ -30,6 +30,7 @@ jobs:
       
     - name: Run terraform init
       run: |
+            pip install apache-airflow-providers-google
             terraform init
     - name: Run terraform plan -destroy
       if: github.ref == 'refs/heads/main'
