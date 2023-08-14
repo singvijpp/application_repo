@@ -10,11 +10,6 @@ resource "google_bigquery_dataset" "terraform_state_dataset" {
     role          = "OWNER"
     user_by_email = google_service_account.composer_env_sa.email
   }
-
-  access {
-    role          = "READER"
-    group_by_email = "user:vijay.psingh2@tcs.com"
-  }
 }
 
 resource "google_bigquery_table" "terraform_state_table" {
