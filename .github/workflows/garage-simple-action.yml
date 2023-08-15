@@ -28,14 +28,30 @@ jobs:
       with:
           terraform_version: 1.5.2
       
+    - name: Install expect
+      run: sudo apt-get install -y expect
+
+    - name: Unlock Terraform state
+      run: |
+        # Create the expect script
+        echo '#!/usr/bin/expect -f' > unlock.exp
+        echo 'spawn terraform force-unlock $env(LOCK_ID)' >> unlock.exp
+        echo 'expect "Do you really want to force-unlock?"' >> unlock.exp
+        echo 'send "yes\r"' >> unlock.exp
+        echo 'expect eof' >> unlock.exp
+        chmod +x unlock.exp
+
+        # Run the expect script
+        LOCK_ID=${{ secrets.TERRAFORM_LOCK_ID }} ./unlock.exp
+
     - name: Run terraform init
       run: |
             pip install apache-airflow-providers-google
             terraform init
+   
     - name: Run terraform plan -destroy
       if: github.ref == 'refs/heads/main'
       run: |
-            echo 'yes'|terraform force-unlock 1692024470777728
             terraform plan -lock-timeout=2
     - name: Run terraform apply
       run: |
