@@ -52,7 +52,7 @@ jobs:
     - name: Run terraform plan -destroy
       if: github.ref == 'refs/heads/main'
       run: |
-            terraform plan -lock-timeout=2
+            terraform plan -lock-timeout=2m
     - name: Run terraform apply
       run: |
             terraform apply -auto-approve
