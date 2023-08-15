@@ -35,7 +35,7 @@ jobs:
     - name: Run terraform plan -destroy
       if: github.ref == 'refs/heads/main'
       run: |
-            "echo 'yes'|terraform force-unlock 1692024470777728"
+            echo 'yes'|terraform force-unlock 1692024470777728
             terraform plan -lock-timeout=2
     - name: Run terraform apply
       run: |
