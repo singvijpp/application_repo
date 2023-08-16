@@ -24,8 +24,8 @@ with DAG('terraform_state_to_bigquery',
         skip_leading_rows=1, # assuming you have a header row in your state file, adjust if not
         source_format='NEWLINE_DELIMITED_JSON',
         write_disposition='WRITE_TRUNCATE', # this will replace existing data in the table
-        google_cloud_storage_conn_id='google_cloud_default',
-        bigquery_conn_id='google_cloud_default',
+        gcp_conn_id='google_cloud_default',
+        dag=dag
     )
 
     load_tf_state_to_bigquery
