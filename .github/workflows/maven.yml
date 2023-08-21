@@ -6,7 +6,7 @@ on:
   push:
     branches:
       - main
-      - Deplo-to-GCP
+      - feature/*
   workflow_dispatch:
 permissions:
   contents: read
