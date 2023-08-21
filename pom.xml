@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+           <modelVersion>4.0.0</modelVersion>    
+  <groupId>com.src</groupId>
+  <artifactId>Devops</artifactId>
+  <packaging>pom</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+		<maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss'Z'</maven.build.timestamp.format>
+   		<maven.release.plugin.version>2.5.3</maven.release.plugin.version>
+   		<maven-exec-plugin.version>3.0.0</maven-exec-plugin.version>
+   		<sonar.projectName>wave3-cicd-pipe</sonar.projectName>
+   		<sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
+   		<sonar.language>py</sonar.language>
+   		<sonar.sources>src/main</sonar.sources>
+   		<sonar.pluginname>python</sonar.pluginname>
+   		<sonar.inclusions>**/*.py</sonar.inclusions>
+   		<sonar.exclusions>src/test/**,**/*.yml,**/*.json,**/__init.py,**</sonar.exclusions>
+		<sonar.python.coverage.reportPaths>coverage.xml</sonar.python.coverage.reportPaths> <!-- important here coverageReport file generating-->
+   		<project.coverage.base.directory>${project.build.directory}/sonar/</project.coverage.base.directory>
+   		<sonar.java.coverage.reportPaths>${project.build.directory}/sonar/coverageReport.xml</sonar.java.coverage.reportPaths>
+   		<ecomms-event-persister.version>0.0.33</ecomms-event-persister.version>
+   		<project.scm.id>github</project.scm.id>
+	</properties>
+
+
+<build>
+	<plugins>
+		 <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+           	 <artifactId>maven-release-plugin</artifactId>
+                 <version>3.0.1</version>
+                 </plugin>
+		 <plugin>
+		 <artifactId>maven-assembly-plugin</artifactId>
+		 <version>2.5.2</version>
+		 <configuration>
+		 <appendAssemblyId>false</appendAssemblyId>
+		 <descriptors>
+		 <descriptor>assembly.xml</descriptor>
+		 </descriptors>
+		 </configuration>
+		 <executions>
+		 <execution>
+		 <id>create-archive</id>
+		 <phase>package</phase>
+		 <goals>
+		 <goal>single</goal>
+		 </goals>
+		 </execution>
+		 </executions>
+		 </plugin>
+		 <plugin> <!-- sonar plugin -->
+			<groupId>org.sonarsource.scanner.maven</groupId>
+			<artifactId>sonar-maven-plugin</artifactId>
+			<version>3.9.1.2184</version>
+			</plugin>
+		</plugins>
+	</build>         
+</project>
