@@ -6,7 +6,7 @@ on:
   push:
     branches:
       - main
-      - sonarqube-integration
+      - Deplo-to-GCP
   workflow_dispatch:
 permissions:
   contents: read
