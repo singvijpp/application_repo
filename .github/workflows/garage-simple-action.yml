@@ -39,7 +39,7 @@ jobs:
       run: |
         # Create the expect script
         echo '#!/usr/bin/expect -f' > unlock.exp
-        echo 'spawn terraform force-unlock $env(LOCK_ID)' >> unlock.exp
+        echo 'spawn terraform force-unlock 1692024470777728' >> unlock.exp
         echo 'expect "Do you really want to force-unlock?"' >> unlock.exp
         echo 'send "yes\r"' >> unlock.exp
         echo 'expect eof' >> unlock.exp
