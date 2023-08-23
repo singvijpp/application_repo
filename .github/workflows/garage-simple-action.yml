@@ -31,6 +31,10 @@ jobs:
     - name: Install expect
       run: sudo apt-get install -y expect
 
+    - name: Run terraform init
+      run: |
+            terraform init
+   
     - name: Unlock Terraform state
       run: |
         # Create the expect script
@@ -44,10 +48,7 @@ jobs:
         # Run the expect script
         LOCK_ID=${{ secrets.TERRAFORM_LOCK_ID }} ./unlock.exp
 
-    - name: Run terraform init
-      run: |
-            terraform init
-   
+    
     - name: Run terraform plan -destroy
       if: github.ref == 'refs/heads/main'
       run: |
